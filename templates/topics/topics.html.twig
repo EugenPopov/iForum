@@ -1,19 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container center_style" style="background-color: #5eb5e0">
-        <div class="row">
-            <div class="col-3"><a href="/add_topic">Add topic</a></div>
+    <div class="container center_style">
+        {{ id }}
+        <div class="row"  style="background-color: #5eb5e0">
+            <div class="col-3"><a href="/add_topic/{{ id }}">Add topic</a></div>
             <div class="col-3"><a href="/contacts">Contacts</a></div>
             <div class="col-3"><a href="/">Home</a></div>
             <div class="col-3"><a href="/add">Log in</a></div>
-
         </div>
         {% for topic in topics %}
-            {{ topic.name }}
+        <div class="row">
+            <div class="col-4" style="border: 4px double black"><a href="/topic/{{ topic.id }}">{{ topic.name }}</a></div>
+            {% if topic.LastMessage is not empty %}
+                <div class="col-4" style="border: 4px double black">{{ topic.LastMessage.text }}</div>
+                <div class="col-4" style="border: 4px double black">{{ topic.LastMessage.date }}</div>
+            {% else %}
+                <div class="col-4" style="border: 4px double black">No messages yet</div>
+                <div class="col-4" style="border: 4px double black">No messages yet</div>
+            {% endif %}
+
+
+        </div>
         {% endfor %}
-
-
     </div>
 
 {% endblock %}

@@ -25,16 +25,16 @@
 
 <div class="all">
 
-    <div class="container center_style" style="background-color: #5eb5e0">
+    <div class="container center_style" style="padding-top: 50px">
         <div class="row">
             <div class="col-3"><a href="/add_topic">Add topic</a></div>
-            <div class="col-3"><a href="/contacts">Contacts</a></div>
+            <div class="col-3"><a href="/login">Log In</a></div>
             <div class="col-3"><a href="/">Home</a></div>
-            <div class="col-3"><a href="/add">Log in</a></div>
+            <div class="col-3"><a href="/register">Register</a></div>
 
         </div>
         {% for  section in sections_list %}
-            <div class = "row qqq" style="background-color: #f9004d">
+            <div class = "row qqq" style="background-color: #9cdbf9">
                 <div class="col-6">
                     <a href="/section/{{ section.id }}">{{ section.name }}</a>
                 </div>

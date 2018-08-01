@@ -33,7 +33,7 @@ class Messages
     private $text;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $author;
 
@@ -42,7 +42,7 @@ class Messages
         return $this->id;
     }
 
-    public function getTopics(): Topics
+    public function getTopics()
     {
         return $this->topics;
     }
@@ -52,9 +52,9 @@ class Messages
         $this->topics = $topics;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getDate(): ?string
     {
-        return $this->date;
+        return $this->date->format('Y-m-d H:i:s');
     }
 
     public function setDate(\DateTimeInterface $date): self

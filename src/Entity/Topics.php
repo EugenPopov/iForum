@@ -38,20 +38,32 @@ class Topics
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="topics")
+     * @ORM\OneToOne(targetEntity="App\Entity\Users", inversedBy="topics")
      * @ORM\JoinColumn(nullable=true)
      */
     private $author;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\OneToOne(targetEntity="App\Entity\Messages", inversedBy="topics")
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $last_post;
+    private $last_message;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @return mixed
      */
-    private $last_update;
+    public function getLastMessage(): ?Messages
+    {
+        return $this->last_message;
+    }
+
+    /**
+     * @param mixed $last_message
+     */
+    public function setLastMessage(Messages $last_message): void
+    {
+        $this->last_message = $last_message;
+    }
 
     public function getId()
     {
@@ -116,27 +128,4 @@ class Topics
         return $this;
     }
 
-    public function getLastPost(): ?string
-    {
-        return $this->last_post;
-    }
-
-    public function setLastPost(string $last_post): self
-    {
-        $this->last_post = $last_post;
-
-        return $this;
-    }
-
-    public function getLastUpdate(): ?\DateTimeInterface
-    {
-        return $this->last_update;
-    }
-
-    public function setLastUpdate(\DateTimeInterface $last_update): self
-    {
-        $this->last_update = $last_update;
-
-        return $this;
-    }
 }

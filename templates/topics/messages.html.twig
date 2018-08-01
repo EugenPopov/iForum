@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+        {{ id }}
+    {% if last_id is defined %}
+        {{ last_id }}
+    {% endif %}
+
+    <div class="container center_style">
+<a href="/">HOME</a>
+        <div class="row">
+            <div class="col-4">Topic: {{ topics_list.name }}</div>
+        </div>
+        <div class="row">
+            <div class="col-4">Author</div>
+            <div class="col-4">Text</div>
+            <div class="col-4">Date</div>
+        </div>
+{% for message in messages %}
+    <div class="row" style="border: 4px double black;"  >
+        <div class="col-4">Author:popov</div>
+        <div class="col-4">{{ message.text }}</div>
+        <div class="col-4">{{ message.date }}</div>
+
+    </div>
+
+{% endfor %}
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+    </div>
+{% endblock %}

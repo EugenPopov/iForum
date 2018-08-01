@@ -19,6 +19,7 @@ class SectionsRepository extends ServiceEntityRepository
         parent::__construct($registry, Sections::class);
     }
 
+
 //    /**
 //     * @return Sections[] Returns an array of Sections objects
 //     */
