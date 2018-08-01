@@ -19,9 +19,9 @@
         </div>
 {% for message in messages %}
     <div class="row" style="border: 4px double black;"  >
-        <div class="col-4">Author:popov</div>
+        <div class="col-2" style="border-style: inset">Author:popov<img src="https://picsum.photos/100/100/?random"></div>
         <div class="col-4">{{ message.text }}</div>
-        <div class="col-4">{{ message.date }}</div>
+        <div class="col-5" style="border-style: inset">{{ message.date }}</div>
 
     </div>
 

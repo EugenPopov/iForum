@@ -1,0 +1,17 @@
+{% extends 'base.html.twig'%}
+
+{% block body %}
+`   <div class="container" style="border: 5px double black">
+    <a href="/">HOME</a>
+        <div class="row">
+
+            <div class="col-md-3 col-md-offset-5">
+                <h1>Nickname: {{ user.username }}</h1>
+                <img src="https://picsum.photos/200/200/?random">
+            </div>
+            <div class="col-3"><h4>Email: {{ user.email }}</h4></div>
+            <div class="col-3">Status: {% if user.root == true%}ADMIN{% else %}COMMON USER{% endif %}
+
+        </div>
+    </div>
+{% endblock %}
