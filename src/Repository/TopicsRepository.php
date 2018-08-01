@@ -19,6 +19,16 @@ class TopicsRepository extends ServiceEntityRepository
         parent::__construct($registry, Topics::class);
     }
 
+    public function getQuery($object)
+    {
+        $qb = $this->createQueryBuilder('q')
+            ->select('IDENTITY(q.section)','q.name')
+            ->where("q.name LIKE :object")
+            ->setParameter('object',$object['question'])
+            ->getQuery();
+        return $qb->execute();
+    }
+
 //    /**
 //     * @return Topics[] Returns an array of Topics objects
 //     */

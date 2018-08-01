@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    {% if filter == 1 %}
+        <div class="row">
+            <div class="col-3" style="border-style: double">Link on topic</div>
+            <div class="col-3" style="border-style: double">Message</div>
+        </div>
+        {% for result in results %}
+            <div class="row">
+                <div class="col-3" style="border-style: ridge">
+                    <a href="/topic/{{ result.1 }}">Topic Link</a>
+                </div>
+                <div class="col-3"style="border-style: ridge">{{ result.text }}</div>
+            </div>
+        {% endfor %}
+     {% elseif filter == 2 %}
+         <div class="row">
+             <div class="col-3" style="border-style: double">Link on section</div>
+             <div class="col-3" style="border-style: double">Topic</div>
+         </div>
+         {% for result in results %}
+             <div class="row">
+                 <div class="col-3" style="border-style: ridge">
+                     <a href="/section/{{ result.1 }}">Section Link</a>
+                 </div>
+                 <div class="col-3"style="border-style: ridge">{{ result.name }}</div>
+             </div>
+         {% endfor %}
+     {% elseif filter == 3 %}
+         <div class="row">
+             <div class="col-6">
+                 {% for message in results.0 %}
+                     <div class="row">
+                         <div class="col-3" style="border-style: ridge">
+                             <a href="/topic/{{ message.1 }}">Topic Link</a>
+                         </div>
+                         <div class="col-3"style="border-style: ridge">{{ message.text }}</div>
+                     </div>
+                 {% endfor %}
+             </div>
+             <div class="col-6">
+             {% for topic in results.1 %}
+                 <div class="row">
+                     <div class="col-3" style="border-style: ridge">
+                         <a href="/section/{{ topic.1 }}">Section Link</a>
+                     </div>
+                     <div class="col-3"style="border-style: ridge">{{ topic.name }}</div>
+                 </div>
+             {% endfor %}
+             </div>
+         </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -19,6 +19,15 @@ class MessagesRepository extends ServiceEntityRepository
         parent::__construct($registry, Messages::class);
     }
 
+    public function getQuery($object)
+    {
+                $qb = $this->createQueryBuilder('q')
+                    ->select('IDENTITY(q.topics)','q.text')
+                    ->where("q.text LIKE :object")
+                    ->setParameter('object',$object['question'])
+                    ->getQuery();
+            return $qb->execute();
+    }
 //    /**
 //     * @return Messages[] Returns an array of Messages objects
 //     */
