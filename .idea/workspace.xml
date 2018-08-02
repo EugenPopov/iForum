@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75eed86e-e230-446f-ae28-4e22dbb303aa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/editing/editMessage.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/MessageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MessageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TopicController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TopicController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UsersController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Messages.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Messages.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/AuthenticationForm.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/MessagesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/MessagesRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/header.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Topics.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Topics.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/topics/messages.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/topics/messages.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/topics/topics.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/topics/topics.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -80,11 +75,11 @@
           <entry key="gitignore" value="1" />
           <entry key="json" value="4" />
           <entry key="lock" value="1" />
-          <entry key="php" value="151" />
+          <entry key="php" value="158" />
           <entry key="sections" value="1" />
           <entry key="sql" value="1" />
           <entry key="topics" value="1" />
-          <entry key="twig" value="57" />
+          <entry key="twig" value="58" />
           <entry key="yaml" value="10" />
         </counts>
       </usages-collector>
@@ -93,10 +88,10 @@
           <entry key="CSS" value="1" />
           <entry key="Database Element" value="2" />
           <entry key="JSON" value="5" />
-          <entry key="PHP" value="151" />
+          <entry key="PHP" value="158" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="Scratch" value="1" />
-          <entry key="Twig" value="57" />
+          <entry key="Twig" value="58" />
           <entry key="YAML" value="10" />
         </counts>
       </usages-collector>
@@ -104,17 +99,17 @@
         <counts>
           <entry key="dummy" value="7" />
           <entry key="env" value="60" />
-          <entry key="php" value="10989" />
-          <entry key="twig" value="4303" />
+          <entry key="php" value="11359" />
+          <entry key="twig" value="4336" />
           <entry key="txt" value="13" />
           <entry key="yaml" value="206" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PHP" value="10989" />
+          <entry key="PHP" value="11359" />
           <entry key="PLAIN_TEXT" value="80" />
-          <entry key="Twig" value="4303" />
+          <entry key="Twig" value="4336" />
           <entry key="YAML" value="206" />
         </counts>
       </usages-collector>
@@ -130,11 +125,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Entity/Topics.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Entity/Messages.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="20" column="97" selection-start-line="20" selection-start-column="97" selection-end-line="20" selection-end-column="97" />
+              <folding>
+                <element signature="e#30#62#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/topics/messages.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="65" selection-start-line="19" selection-start-column="65" selection-end-line="19" selection-end-column="65" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/MessageController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
-              <caret line="68" column="65" lean-forward="true" selection-start-line="68" selection-start-column="65" selection-end-line="68" selection-end-column="65" />
+            <state relative-caret-position="252">
+              <caret line="31" column="28" lean-forward="true" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
               <folding>
                 <element signature="e#36#65#0#PHP" expanded="true" />
               </folding>
@@ -143,10 +168,27 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Entity/Sections.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/TopicController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="495">
+              <caret line="33" column="67" selection-start-line="33" selection-start-column="67" selection-end-line="33" selection-end-column="67" />
+              <folding>
+                <element signature="e#35#59#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Repository/MessagesRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="30" selection-start-line="30" selection-end-line="30" />
+            <state relative-caret-position="270">
+              <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
               <folding>
                 <element signature="e#34#58#0#PHP" expanded="true" />
               </folding>
@@ -179,12 +221,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Form/SearchForm.php">
+        <entry file="file://$PROJECT_DIR$/src/Controller/RegistrationController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+            <state relative-caret-position="480">
+              <caret line="32" column="41" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
               <folding>
-                <element signature="e#28#68#0#PHP" expanded="true" />
+                <element signature="e#35#57#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -228,7 +270,6 @@
         <option value="$PROJECT_DIR$/src/Migrations/Version20180731143922.php" />
         <option value="$PROJECT_DIR$/src/Repository/SectionsRepository.php" />
         <option value="$PROJECT_DIR$/src/Migrations/Version20180731222458.php" />
-        <option value="$PROJECT_DIR$/src/Entity/Topics.php" />
         <option value="$PROJECT_DIR$/src/Controller/HomeController.php" />
         <option value="$PROJECT_DIR$/templates/users/userList.html.twig" />
         <option value="$PROJECT_DIR$/src/Form/AddTopic.php" />
@@ -254,16 +295,17 @@
         <option value="$PROJECT_DIR$/config/routes.yaml" />
         <option value="$PROJECT_DIR$/templates/users/user.html.twig" />
         <option value="$PROJECT_DIR$/templates/topics/addTopic.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/UsersController.php" />
         <option value="$PROJECT_DIR$/src/Controller/TopicController.php" />
         <option value="$PROJECT_DIR$/templates/topics/topics.html.twig" />
-        <option value="$PROJECT_DIR$/src/Entity/Messages.php" />
         <option value="$PROJECT_DIR$/src/Entity/Users.php" />
         <option value="$PROJECT_DIR$/templates/header.html.twig" />
-        <option value="$PROJECT_DIR$/templates/topics/messages.html.twig" />
         <option value="$PROJECT_DIR$/templates/editing/editMessage.html.twig" />
         <option value="$PROJECT_DIR$/src/Form/EditMessageForm.php" />
         <option value="$PROJECT_DIR$/src/Repository/MessagesRepository.php" />
+        <option value="$PROJECT_DIR$/src/Controller/UsersController.php" />
+        <option value="$PROJECT_DIR$/templates/topics/messages.html.twig" />
+        <option value="$PROJECT_DIR$/src/Entity/Messages.php" />
+        <option value="$PROJECT_DIR$/src/Entity/Topics.php" />
         <option value="$PROJECT_DIR$/src/Controller/MessageController.php" />
       </list>
     </option>
@@ -453,7 +495,7 @@
               <item name="diplom_project" type="b2602c69:ProjectViewProjectNode" />
               <item name="diplom_project" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="editing" type="462c0819:PsiDirectoryNode" />
+              <item name="topics" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="diplom_project" type="b2602c69:ProjectViewProjectNode" />
@@ -528,12 +570,12 @@
       <workItem from="1532614242936" duration="44604000" />
       <workItem from="1532863285860" duration="17273000" />
       <workItem from="1532944372505" duration="15229000" />
-      <workItem from="1533024744448" duration="95497000" />
+      <workItem from="1533024744448" duration="98595000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="190585000" />
+    <option name="totallyTimeSpent" value="193683000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1366" y="25" width="1920" height="1004" extended-state="6" />
@@ -590,13 +632,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/doctrine/doctrine-bundle/Repository/ServiceEntityRepositoryInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/doctrine/doctrine-bundle/Repository/ServiceEntityRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
@@ -645,13 +680,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Topics.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/composer.lock">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-88789" />
@@ -685,16 +713,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/SecurityController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-          <folding>
-            <element signature="e#34#91#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -822,50 +840,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/UsersController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#115#161#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/TopicController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="33" column="67" selection-start-line="33" selection-start-column="67" selection-end-line="33" selection-end-column="67" />
-          <folding>
-            <element signature="e#35#59#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/RegistrationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="41" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
-          <folding>
-            <element signature="e#35#57#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Migrations/Version20180802084400.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="19" column="83" selection-start-line="19" selection-start-column="83" selection-end-line="19" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Messages.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="92" column="37" selection-start-line="92" selection-start-column="37" selection-end-line="92" selection-end-column="37" />
-          <folding>
-            <element signature="e#30#62#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -890,13 +868,6 @@
           <folding>
             <element signature="e#28#60#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/topics/messages.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="33" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -941,6 +912,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/RegistrationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="41" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
+          <folding>
+            <element signature="e#35#57#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/UsersController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#115#161#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/SecurityController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+          <folding>
+            <element signature="e#34#91#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Repository/MessagesRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
+          <folding>
+            <element signature="e#34#58#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/SearchController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
@@ -951,20 +962,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Repository/MessagesRepository.php">
+    <entry file="file://$PROJECT_DIR$/templates/topics/messages.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="285">
+          <caret line="19" column="65" selection-start-line="19" selection-start-column="65" selection-end-line="19" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/TopicController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="67" selection-start-line="33" selection-start-column="67" selection-end-line="33" selection-end-column="67" />
           <folding>
-            <element signature="e#34#58#0#PHP" expanded="true" />
+            <element signature="e#35#59#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Sections.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Messages.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="20" column="97" selection-start-line="20" selection-start-column="97" selection-end-line="20" selection-end-column="97" />
+          <folding>
+            <element signature="e#30#62#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Topics.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/MessageController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="68" column="65" lean-forward="true" selection-start-line="68" selection-start-column="65" selection-end-line="68" selection-end-column="65" />
+        <state relative-caret-position="252">
+          <caret line="31" column="28" lean-forward="true" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
           <folding>
             <element signature="e#36#65#0#PHP" expanded="true" />
           </folding>

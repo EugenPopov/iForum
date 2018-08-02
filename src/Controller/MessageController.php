@@ -18,6 +18,23 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class MessageController extends Controller
 {
     /**
+     * @Route("/delete/message/{id}", name="delete_message")
+     */
+    public function deleteMessage($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $message = $em->getRepository(Messages::class)->find($id);
+        $em->remove($message);
+        $em->flush();
+
+        $topic = $em->getRepository(Topics::class)->findOneBy(['last_message'=>$id]);
+        $em->remove($topic);
+        $em->flush();
+
+        return $this->redirectToRoute('home');
+    }
+    /**
      * @Route("/edit/message/{id}", name="edit_message")
      */
     public function editMessage($id,Request $request){
@@ -26,7 +43,6 @@ class MessageController extends Controller
         $message = $em->getRepository(Messages::class)->find($id);
 
         $form = $this->createForm(EditMessageForm::class,$message);
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

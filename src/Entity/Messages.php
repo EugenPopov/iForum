@@ -18,7 +18,7 @@ class Messages
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Topics", inversedBy="messages")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Topics", inversedBy="messages", cascade={"remove"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $topics;

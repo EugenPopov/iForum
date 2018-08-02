@@ -44,8 +44,9 @@ class Topics
     private $author;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Messages", inversedBy="topics")
+     * @ORM\OneToOne(targetEntity="App\Entity\Messages", inversedBy="topics", orphanRemoval=true)
      * @ORM\JoinColumn(nullable=true)
+     *
      */
     private $last_message;
 
