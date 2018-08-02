@@ -29,7 +29,6 @@ class RegistrationController extends Controller
             // 3) Зашифруйте пароль (вы также можете сделать это через слушатель Doctrine)
             $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
-            $user->setRoot(0);
 
             // 4) сохраните Пользователя!
             $em = $this->getDoctrine()->getManager();

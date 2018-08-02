@@ -1,168 +1,128 @@
 <?php
-
 namespace App\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Security\Core\User\UserInterface;
-
 
 /**
+ *
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
- * @ORM\Entity
- * @UniqueEntity(fields="email", message="Email already taken")
- * @UniqueEntity(fields="username", message="Username already taken")
+ * @UniqueEntity(fields="username",message="Username already taken")
+ * @UniqueEntity(fields="email",message="Email already taken")
  */
-
-class Users implements UserInterface
+class Users implements UserInterface, \Serializable
 {
     /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id): void
-    {
-        $this->id = $id;
-    }
-    /**
-     * @ORM\Id
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=25, unique=true)
+     * @Assert\NotBlank()
+     */
+    private $username;
+    /**
+     * @ORM\Column(type="string", length=254, unique=true)
      * @Assert\NotBlank()
      * @Assert\Email()
      */
     private $email;
-
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
-     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=64)
      */
-    private $username;
-
+    private $password;
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
     /**
      * @Assert\NotBlank()
      * @Assert\Length(max=4096)
      */
     private $plainPassword;
-
     /**
-     * Нижеуказанная длина зависит от "алгоритма", который вы используете для шифрования
-     * пароля, но это также хорошо работает с bcrypt.
-     *
-     * @ORM\Column(type="string", length=64)
+     * @ORM\Column(type="array")
      */
-    private $password;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $root;
-
-    // другие свойства и методы
-
-    public function getEmail()
+    private $roles;
+    public function __construct()
     {
-        return $this->email;
+        $this->roles = array('ROLE_ADMIN');
+        $this->createdAt = new \DateTime();
     }
-
-    public function setEmail($email)
+    public function getId()
     {
-        $this->email = $email;
+        return $this->id;
     }
-
     public function getUsername()
     {
         return $this->username;
     }
-
-    public function setUsername($username)
+    public function setUsername($username): void
     {
         $this->username = $username;
     }
-
-    public function getPlainPassword()
+    public function getEmail()
     {
-        return $this->plainPassword;
+        return $this->email;
     }
-
-    public function setPlainPassword($password)
+    public function setEmail($email): void
     {
-        $this->plainPassword = $password;
+        $this->email = $email;
     }
-
     public function getPassword()
     {
         return $this->password;
     }
-
-    public function setPassword($password)
+    public function setPassword($password): void
     {
         $this->password = $password;
     }
-
-    public function getSalt()
+    public function getCreatedAt()
     {
-        // Алгоритмы bcrypt и argon2i не требуют отдельной соли.
-        // Вам *может* понадобиться настоящая соль, если вы выберете другой кодировшик.
-        return null;
+        return $this->createdAt;
     }
-
-    // другие методы, включая методы безопасности вроде getRoles()
-
-    /**
-     * Returns the roles granted to the user.
-     *
-     * <code>
-     * public function getRoles()
-     * {
-     *     return array('ROLE_USER');
-     * }
-     * </code>
-     *
-     * Alternatively, the roles might be stored on a ``roles`` property,
-     * and populated in any number of different ways when the user object
-     * is created.
-     *
-     * @return (Role|string)[] The user roles
-     */
-    public function getRoles()
+    public function setCreatedAt($createdAt): void
     {
-        // TODO: Implement getRoles() method.
+        $this->createdAt = $createdAt;
     }
-
-    /**
-     * Removes sensitive data from the user.
-     *
-     * This is important if, at any given point, sensitive information like
-     * the plain-text password is stored on this object.
-     */
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
     }
-
-    public function getRoot(): ?bool
+    public function getRoles()
     {
-        return $this->root;
+        return $this->roles;
     }
-
-    public function setRoot(bool $root): self
+    public function getSalt()
     {
-        $this->root = $root;
-
-        return $this;
+        return null;
+    }
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+    public function setPlainPassword($plainPassword): void
+    {
+        $this->plainPassword = $plainPassword;
+    }
+    /** @see \Serializable::serialize() */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password
+        ));
+    }
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->username,
+            $this->password
+            ) = unserialize($serialized, array('allowed_classes'=> false));
     }
 }

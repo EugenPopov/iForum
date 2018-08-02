@@ -23,8 +23,8 @@ class MessagesRepository extends ServiceEntityRepository
     {
                 $qb = $this->createQueryBuilder('q')
                     ->select('IDENTITY(q.topics)','q.text')
-                    ->where("q.text LIKE :object")
-                    ->setParameter('object',$object['question'])
+                    ->andWhere("q.text LIKE :object")
+                    ->setParameter("object",'%'.$object['question'].'%')
                     ->getQuery();
             return $qb->execute();
     }

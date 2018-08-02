@@ -53,12 +53,6 @@ class SearchController extends Controller
             break;
         }
 
-//        echo '<pre>';
-//        var_dump($results);
-//        echo '</pre>';
         return $this->render('search/list.html.twig',['results'=>$results,'filter'=>$question['filter']]);
-
-
-        return new Response('');
     }
 }
