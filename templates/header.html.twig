@@ -1,20 +1,45 @@
-{% extends 'base.html.twig' %}
+<header>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-{% block body %}
-<div class="container">
-    <div class="row">
-        <div class="col-2"><a href="/add_topic">Add topic</a></div>
-        {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
-            <div class="col-3"><a href="/logout">Log Out</a></div>
-            {% else %}
-                <div class="col-3"><a href="/login">Log In</a></div>
-        {% endif %}
+    <div class="collapse navbar-collapse row" id="navbarTogglerDemo01">
+        <ul class="navbar-nav mr-auto mt-5 mt-lg-0">
 
-        <div class="col-3"><a href="/userlist">Users</a></div>
-        {% if is_granted ('ROLE_USER') == false  or is_granted('ROLE_ADMIN') == false %}
-        <div class="col-2"><a href="/register">Register</a></div>
-        {% endif %}
-        <div class="col-2"><a href="/">Home</a></div>
-    </div>
-</div>
-{% endblock %}
+
+            <li class="nav-item active col-3">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+
+            {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+
+            <li class="nav-item active col-3">
+                <a class="nav-link" href="/add_topic">Add Topic <span class="sr-only">(current)</span></a>
+            </li>
+
+            {% endif %}
+
+            <li class="nav-item active col-3">  
+                {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+                    <a class="nav-link" href="/logout">Log Out<span class="sr-only">(current)</span></a>
+                {% else %}
+                    <a class="nav-link" href="/login">Log in<span class="sr-only">(current)</span></a>
+                {% endif %}
+            </li>
+            <li class="nav-item active col-3">  
+                <a class="nav-link" href="#">Registration<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active col-4">
+                <a class="nav-link" href="/addSong">Add Song<span class="sr-only">(current)</span></a>
+            </li>
+             </div>
+        </ul>
+        
+        
+        
+        
+    
+</nav>
+</header>

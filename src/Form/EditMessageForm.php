@@ -22,7 +22,7 @@ class EditMessageForm extends AbstractType
     {
         $builder
             ->add('text',TextType::class)
-            ->add('save',SubmitType::class,['label'=>'Search'])
+            ->add('save',SubmitType::class,['label'=>'Change'])
             ->getForm();
     }
 }

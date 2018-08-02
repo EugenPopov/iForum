@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Form\EditMessageForm;
 use App\Repository\MessagesRepository;
+use phpDocumentor\Reflection\Types\Null_;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -66,8 +67,13 @@ class MessageController extends Controller
             foreach($message_list as $message){
                 var_dump($message->getId());
             }
+        if ($this->getUser() == Null){
+            $current_user = 0;
+        }
+        else{
+            $current_user = $this->getUser()->getId();
+        }
 
-        $current_user = $this->getUser()->getId();
         $messages = new Messages();
         $messages->setDate(new \DateTime());
         $form = $this->createForm(AddMessage::class,$messages);

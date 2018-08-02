@@ -12,10 +12,17 @@
 
     <div class="container center_style" style="padding: 10px;">
         <div class="row" style="padding-bottom: 10px">
-            <div class="col-8"></div>
-            <div class="col">
+
+            <div class="col-6">
                 {{ form_start(form) }}
-                {{ form_widget(form) }}
+                {{ form_widget(form.question) }}
+            </div>
+            <div class="col-4">
+                {{ form_widget(form.filter) }}
+            </div>
+
+            <div class="col-2">
+                {{ form_widget(form.save) }}
                 {{ form_end(form) }}
             </div>
 
