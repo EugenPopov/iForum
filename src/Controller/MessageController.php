@@ -27,12 +27,6 @@ class MessageController extends Controller
         $message = $em->getRepository(Messages::class)->find($id);
         $em->remove($message);
         $em->flush();
-
-        $topic = $em->getRepository(Topics::class)->findOneBy(['last_message'=>$id]);
-        $em->remove($topic);
-        $em->flush();
-
-        return $this->redirectToRoute('home');
     }
     /**
      * @Route("/edit/message/{id}", name="edit_message")
