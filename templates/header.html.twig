@@ -4,14 +4,16 @@
 <div class="container">
     <div class="row">
         <div class="col-2"><a href="/add_topic">Add topic</a></div>
-        {% if is_granted('ROLE_USER') %}
+        {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
             <div class="col-3"><a href="/logout">Log Out</a></div>
             {% else %}
                 <div class="col-3"><a href="/login">Log In</a></div>
         {% endif %}
 
         <div class="col-3"><a href="/userlist">Users</a></div>
+        {% if is_granted ('ROLE_USER') == false  or is_granted('ROLE_ADMIN') == false %}
         <div class="col-2"><a href="/register">Register</a></div>
+        {% endif %}
         <div class="col-2"><a href="/">Home</a></div>
     </div>
 </div>

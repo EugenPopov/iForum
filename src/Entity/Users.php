@@ -49,7 +49,7 @@ class Users implements UserInterface, \Serializable
     private $roles;
     public function __construct()
     {
-        $this->roles = array('ROLE_ADMIN');
+        $this->roles = array('ROLE_USER');
         $this->createdAt = new \DateTime();
     }
     public function getId()

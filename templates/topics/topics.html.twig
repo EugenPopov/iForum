@@ -4,10 +4,7 @@
     <div class="container center_style">
         {{ id }}
         <div class="row"  style="background-color: #5eb5e0">
-            <div class="col-3"><a href="/add_topic/{{ id }}">Add topic</a></div>
-            <div class="col-3"><a href="/contacts">Contacts</a></div>
-            <div class="col-3"><a href="/">Home</a></div>
-            <div class="col-3"><a href="/add">Log in</a></div>
+            {% include 'header.html.twig' %}
         </div>
         {% for topic in topics %}
         <div class="row">

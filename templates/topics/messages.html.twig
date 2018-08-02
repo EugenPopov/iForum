@@ -2,13 +2,8 @@
 
 
 {% block body %}
-        {{ id }}
-    {% if last_id is defined %}
-        {{ last_id }}
-    {% endif %}
-
     <div class="container center_style">
-<a href="/">HOME</a>
+        {% include 'header.html.twig' %}
         <div class="row">
             <div class="col-4">Topic: {{ topics_list.name }}</div>
         </div>
@@ -19,16 +14,26 @@
         </div>
 {% for message in messages %}
     <div class="row" style="border: 4px double black;"  >
-        <div class="col-2" style="border-style: inset">Author:popov<img src="https://picsum.photos/100/100/?random"></div>
+        <div class="col-2">
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="/edit/message/{{ message.id }}">EDIT</a>
+        {% elseif message.isAuthorofMessage(user_id) %}
+            <a href="/edit/message/{{ message.id }}">EDIT</a>
+        {% endif %}
+    </div>
+        <div class="col-2" style="border-style: inset">Author:{{ message.author.username }}<img src="https://picsum.photos/100/100/?random"></div>
         <div class="col-4">{{ message.text }}</div>
-        <div class="col-5" style="border-style: inset">{{ message.date }}</div>
+        <div class="col-4" style="border-style: inset">{{ message.date }}</div>
 
     </div>
 
 {% endfor %}
-
+        {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
     {{ form_start(form) }}
     {{ form_widget(form) }}
     {{ form_end(form) }}
+        {% else %}
+        <h3>Log In to write messages</h3>
+        {% endif %}
     </div>
 {% endblock %}

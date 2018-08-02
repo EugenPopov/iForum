@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MessagesRepository")
@@ -33,7 +34,8 @@ class Messages
     private $text;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="messages")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $author;
 
@@ -76,15 +78,22 @@ class Messages
         return $this;
     }
 
-    public function getAuthor(): ?string
+    public function getAuthor(): ?Users
     {
         return $this->author;
     }
 
-    public function setAuthor(string $author): self
+    public function setAuthor(Users $author): self
     {
         $this->author = $author;
 
         return $this;
     }
+
+    public function isAuthorOfMessage(int $userId): bool
+    {
+        return $this->getAuthor()->getId() === $userId;
+    }
+
+
 }

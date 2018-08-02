@@ -29,8 +29,9 @@ class TopicController extends Controller
             $entity_manager = $this->getDoctrine()->getManager();
             $entity_manager->persist($user);
             $entity_manager->flush();
+            $last_id = $user->getId();
 
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('list',['id'=>$last_id]);
         }
         //$this->addSql("INSERT INTO sections (name) VALUES ('Авто'),('Кино'),('Музыка'),('ИТ'),('Бизнес')");
         return $this->render('topics/addTopic.html.twig',['form'=>$form->createView()]);
