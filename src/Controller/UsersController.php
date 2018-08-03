@@ -12,19 +12,19 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Users;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 class UsersController extends Controller
 {
 
 
+
     /**
-     * @Route("/user/{id}", name="user")
+     * @Route("/profile", name="profile")
      */
-    public function ShowUser($id)
+    public function ShowUser()
     {
         $repository = $this->getDoctrine()->getRepository(Users::class);
-        $user = $repository->findOneBy(['id'=>$id]);
+        $user = $repository->findOneBy(['id'=>$this->getUser()->getId()]);
 
         return $this->render('users/user.html.twig',['user'=>$user]);
     }

@@ -2,10 +2,11 @@
 
 
 {% block body %}
+
     <div class="container center_style">
         {% include 'header.html.twig' %}
         <div class="row">
-            <div class="col-4">Topic: {{ topics_list.name }}</div>
+            <div class="col-4"><a href="{{ path('form',{'id': topic.section.getId}) }}">{{ topic.section.name }} </a> <a href="{{ path('form',{'id': topic.id}) }}">{{ topic.name }}</a></div>
         </div>
         <div class="row">
             <div class="col-4">Author</div>
@@ -13,20 +14,18 @@
             <div class="col-4">Date</div>
         </div>
 {% for message in messages %}
-    <div class="row" style="border: 4px double black;"  >
-        <div class="col-2">
-        {% if is_granted('ROLE_ADMIN') %}
-            <a href="/edit/message/{{ message.id }}">EDIT</a>
-            <a href="/delete/message/{{ message.id }}">DELETE</a>
-        {% elseif message.isAuthorofMessage(user_id) %}
-            <a href="/edit/message/{{ message.id }}">EDIT</a>
-            <a href="/delete/message/{{ message.id }}">DELTE</a>
-        {% endif %}
-    </div>
-        <div class="col-2" style="border-style: inset">Author:{{ message.author.username }}<img src="https://picsum.photos/100/100/?random"></div>
+    <div class="row">
+
+        <div class="col-2" style="border-style: inset">Author:{{ message.author.username }}<img src="/uploads/{{ message.author.getImage() }}" width="150px" height="150px"></div>
         <div class="col-4">{{ message.text }}</div>
         <div class="col-4" style="border-style: inset">{{ message.date }}</div>
+    <div class="col-2">
+        {% if is_granted('ROLE_ADMIN')  or message.isAuthorofMessage(user_id)%}
+            <a href="/edit/message/{{ message.id }}">edit</a>
+            <a href="/delete/message/{{ message.id }}">delete</a>
+        {% endif %}
 
+    </div>
     </div>
 
 {% endfor %}

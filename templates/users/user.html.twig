@@ -1,16 +1,17 @@
 {% extends 'base.html.twig'%}
 
 {% block body %}
-`   <div class="container" style="border: 5px double black">
+    `   <div class="container" style="border: 5px double black">
     <a href="/">HOME</a>
-        <div class="row">
+    <div class="row">
 
-            <div class="col-md-3 col-md-offset-5">
-                <h1>Nickname: {{ user.username }}</h1>
-                <img src="https://picsum.photos/200/200/?random">
-            </div>
-            <div class="col-3"><h4>Email: {{ user.email }}</h4></div>
-            <div class="col-3">Status:  {{ user.roles[0] }}
+        <div class="col-md-3 col-md-offset-5">
+            <h1>User Name: {{ user.username }}</h1>
+            <img src="/uploads/{{ user.image }}" alt="Picture not Found" width="300px" height="300px">
+        </div>
+        <div class="col-3"><h4>Email: {{ user.email }}</h4></div>
+        <div class="col-3">Status:  {{ user.roles[0] }}
+
 
         </div>
     </div>

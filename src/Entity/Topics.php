@@ -44,11 +44,22 @@ class Topics
     private $author;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Messages", inversedBy="topics", orphanRemoval=true)
+     * @ORM\OneToOne(targetEntity="App\Entity\Messages", inversedBy="topics")
      * @ORM\JoinColumn(nullable=true)
      *
      */
     private $last_message;
+
+    /**
+     * Topics constructor.
+     * @param $date
+     */
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+        $this->close = false;
+    }
+
 
     /**
      * @return mixed
@@ -61,7 +72,7 @@ class Topics
     /**
      * @param mixed $last_message
      */
-    public function setLastMessage(Messages $last_message): void
+    public function setLastMessage(?Messages $last_message): void
     {
         $this->last_message = $last_message;
     }
@@ -84,13 +95,6 @@ class Topics
     public function getDate(): ?\DateTimeInterface
     {
         return $this->date;
-    }
-
-    public function setDate(\DateTimeInterface $date): self
-    {
-        $this->date = $date;
-
-        return $this;
     }
 
     public function getClose(): ?bool

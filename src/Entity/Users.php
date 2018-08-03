@@ -47,6 +47,12 @@ class Users implements UserInterface, \Serializable
      * @ORM\Column(type="array")
      */
     private $roles;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\File(mimeTypes={ "image/jpeg", "image/png" })
+     */
+    private $image;
     public function __construct()
     {
         $this->roles = array('ROLE_USER');
@@ -107,7 +113,7 @@ class Users implements UserInterface, \Serializable
     {
         $this->plainPassword = $plainPassword;
     }
-    /** @see \Serializable::serialize() */
+
     public function serialize()
     {
         return serialize(array(
@@ -116,7 +122,7 @@ class Users implements UserInterface, \Serializable
             $this->password
         ));
     }
-    /** @see \Serializable::unserialize() */
+
     public function unserialize($serialized)
     {
         list (
@@ -124,5 +130,17 @@ class Users implements UserInterface, \Serializable
             $this->username,
             $this->password
             ) = unserialize($serialized, array('allowed_classes'=> false));
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage($image): self
+    {
+        $this->image = $image;
+
+        return $this;
     }
 }

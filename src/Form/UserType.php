@@ -5,6 +5,7 @@ namespace App\Form;
 
 use App\Entity\Users;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -23,7 +24,9 @@ class UserType extends AbstractType
                 'type' => PasswordType::class,
                 'first_options'  => array('label' => 'Password'),
                 'second_options' => array('label' => 'Repeat Password'),
+
             ))
+            ->add('image',FileType::class,['label'=>'add image'])
         ;
     }
 

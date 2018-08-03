@@ -14,20 +14,43 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Messages;
 use App\Form\AddMessage;
 use App\Entity\Topics;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 class MessageController extends Controller
 {
     /**
      * @Route("/delete/message/{id}", name="delete_message")
      */
-    public function deleteMessage($id)
+    public function deleteMessage($id, MessagesRepository $query)
     {
         $em = $this->getDoctrine()->getManager();
+        $MRepository = $em->getRepository(Messages::class);
+        $message = $MRepository->find($id);
 
-        $message = $em->getRepository(Messages::class)->find($id);
-        $em->remove($message);
-        $em->flush();
+        if($message->isAuthorOfMessage($this->getUser()->getId())){
+            $topic_id = $message->getTopics()->getId();
+
+            if($message->getTopics()->getLastMessage() != null){
+                if($message->getText() == $message->getTopics()->getLastMessage()->getText()) {
+                    $message->getTopics()->setLastMessage(null);
+                    $em->persist($message);
+                }
+            }
+            $em->remove($message);
+            $em->flush();
+
+            $message_list = $query->lastMessage($MRepository->findBy(['topics'=>$topic_id]));
+            $message->getTopics()->setLastMessage($message_list);
+
+            $em->persist($message);
+            $em->remove($message);
+            $em->flush();
+
+
+            return $this->redirectToRoute('list',['id'=>$message->getTopics()->getId()]);}
+        else{
+
+            return $this->redirectToRoute('home');
+        }
     }
     /**
      * @Route("/edit/message/{id}", name="edit_message")
@@ -53,20 +76,20 @@ class MessageController extends Controller
         }
         return $this->render('editing/editMessage.html.twig',['form'=>$form->createView()]);
     }
+
     /**
      * @Route("/topic/{id}", name="list")
      */
     public function showMessages(Request $request,$id)
     {
-        $topics_repository = $this->getDoctrine()->getRepository(Topics::class);
-        $topics_list = $topics_repository->findOneBy(['id'=>$id]);
+        $doctrine = $this->getDoctrine();
 
-        $message_repository = $this->getDoctrine()->getRepository(Messages::class);
+        $topic_repository = $doctrine->getRepository(Topics::class)->findOneBy(['id'=>$id]);
+
+
+
+        $message_repository = $doctrine->getRepository(Messages::class);
         $message_list = $message_repository->findBy(['topics'=>$id]);
-
-            foreach($message_list as $message){
-                var_dump($message->getId());
-            }
         if ($this->getUser() == Null){
             $current_user = 0;
         }
@@ -75,12 +98,11 @@ class MessageController extends Controller
         }
 
         $messages = new Messages();
-        $messages->setDate(new \DateTime());
         $form = $this->createForm(AddMessage::class,$messages);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $messages->setTopics($topics_list);
+            $messages->setTopics($message_list[0]->getTopics());
             $messages->setAuthor($this->getUser());
             $entity_manager = $this->getDoctrine()->getManager();
             $entity_manager->persist($messages);
@@ -97,6 +119,6 @@ class MessageController extends Controller
             return $this->redirectToRoute('list',['id'=>$id]);
         }
 
-        return $this->render('topics/messages.html.twig',['messages'=>$message_list, 'id'=>$id, 'form'=>$form->createView(),'topics_list'=>$topics_list,'user_id'=>$current_user]);
+        return $this->render('topics/messages.html.twig',['messages'=>$message_list, 'id'=>$id, 'form'=>$form->createView(),'user_id'=>$current_user,'topic'=>$topic_repository]);
     }
 }

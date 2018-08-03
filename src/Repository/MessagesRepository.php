@@ -29,6 +29,15 @@ class MessagesRepository extends ServiceEntityRepository
             return $qb->execute();
     }
 
+    public function lastMessage($topic)
+    {
+        $qb = $this->createQueryBuilder('t');
+        $qb->setMaxResults(1);
+        $qb->orderBy('t.id','DESC');
+
+        return $qb->getQuery()->getSingleResult();
+    }
+
 
 //    /**
 //     * @return Messages[] Returns an array of Messages objects

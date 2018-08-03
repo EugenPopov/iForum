@@ -19,8 +19,6 @@ class TopicController extends Controller
     public function addTopic(Request $request,$id=null)
     {
         $user = new Topics();
-        $user->setDate(new \DateTime());
-        $user->setClose(0);
         $form = $this->createForm(AddTopic::class, $user);
 
         $form->handleRequest($request);

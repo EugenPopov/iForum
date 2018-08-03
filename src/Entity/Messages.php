@@ -18,7 +18,7 @@ class Messages
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Topics", inversedBy="messages", cascade={"remove"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Topics", inversedBy="messages")
      * @ORM\JoinColumn(nullable=true)
      */
     private $topics;
@@ -38,6 +38,16 @@ class Messages
      * @ORM\JoinColumn(nullable=true)
      */
     private $author;
+
+    /**
+     * Messages constructor.
+     * @param $date
+     */
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
+
 
     public function getId()
     {

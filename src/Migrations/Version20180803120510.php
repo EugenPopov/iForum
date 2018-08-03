@@ -8,16 +8,14 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20180802084400 extends AbstractMigration
+final class Version20180803120510 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE messages ADD author_id INT DEFAULT NULL, DROP author');
-        $this->addSql('ALTER TABLE messages ADD CONSTRAINT FK_DB021E96F675F31B FOREIGN KEY (author_id) REFERENCES users (id)');
-        $this->addSql('CREATE INDEX IDX_DB021E96F675F31B ON messages (author_id)');
+        $this->addSql('ALTER TABLE users ADD image VARCHAR(255) DEFAULT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -25,8 +23,6 @@ final class Version20180802084400 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE messages DROP FOREIGN KEY FK_DB021E96F675F31B');
-        $this->addSql('DROP INDEX IDX_DB021E96F675F31B ON messages');
-        $this->addSql('ALTER TABLE messages ADD author VARCHAR(255) DEFAULT NULL COLLATE utf8mb4_unicode_ci, DROP author_id');
+        $this->addSql('ALTER TABLE users DROP image');
     }
 }
