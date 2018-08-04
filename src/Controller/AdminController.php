@@ -18,7 +18,25 @@ class AdminController extends Controller
     {
         $q = $this->getDoctrine()->getRepository(Users::class)->findOneBy(['id'=>3]);
 
-        return new Response(var_dump($q));
+        echo '<a href="admin/userlist">User List</a>';
+
+        return new Response('');
+    }
+
+    /**
+     * @Route("/admin/give_admin{id}", name="give_admin")
+     */
+    public function giveAdmin($id)
+    {
+        $em= $this->getDoctrine()->getManager();
+
+        $user = $em->getRepository(Users::class)->findOneBy(['id'=>$id]);
+
+        $user->setRoles(['ROLE_ADMIN']);
+
+        $em->flush();
+
+        return $this->redirectToRoute('user_list');
     }
 
 }

@@ -1,41 +1,44 @@
 {% extends 'base.html.twig' %}
-
 {% block body %}
     <div class="container center_style">
         {% for topic in topics %}
-        <div class="row">
-            <div class="col-4 list-group text-truncate" >
-                <a href="/topic/{{ topic.id }}" class="list-group-item list-group-item-action">{{ topic.name }}</a>
+            <div class="row">
+                <div class="col-4 list-group text-truncate" >
+                    <a href="/topic/{{ topic.id }}" class="list-group-item list-group-item-action">{{ topic.name }}
+                    </a>
+                </div>
+                {% if topic.LastMessage is not empty %}
+                    <div class="col-3 list-group text-truncate" >
+                        <a class="list-group-item list-group-item-action">{{ topic.LastMessage.text }}
+                        </a>
+                    </div>
+                    <div class="col-2 list-group text-truncate">
+                        <a class="list-group-item list-group-item-action">{{ topic.LastMessage.date }}
+                        </a>
+                    </div>
+                {% else %}
+                    <div class="col-3 list-group text-truncate">
+                        <a class="list-group-item list-group-item-action">No messages yet
+                        </a>
+                    </div>
+                    <div class="col-2 list-group text-truncate">
+                        <a class="list-group-item list-group-item-action">No messages yet
+                        </a>
+                    </div>
+                {% endif %}
+                {% if topic.isAuthorOfTopic(userId) %}
+                    <div class="col-3">
+                        <div class="btn-group" role="group" >
+                            <a href="{{ path('edit_topic',{'id': topic.id}) }}" class="btn btn-info">Edit
+                            </a>
+                            <a href="{{ path('close',{id: topic.id}) }}" class="btn btn-warning">Close
+                            </a>
+                            <a href="{{ path('delete_topic',{id: topic.id}) }}" class="btn btn-danger">Delete
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
             </div>
-
-            {% if topic.LastMessage is not empty %}
-                <div class="col-3 list-group text-truncate" >
-                    <a class="list-group-item list-group-item-action">{{ topic.LastMessage.text }}</a>
-                </div>
-                <div class="col-2 list-group text-truncate">
-                    <a class="list-group-item list-group-item-action">{{ topic.LastMessage.date }}</a>
-                </div>
-            {% else %}
-                <div class="col-3 list-group text-truncate">
-                    <a class="list-group-item list-group-item-action">No messages yet</a>
-                </div>
-                <div class="col-2 list-group text-truncate">
-                    <a class="list-group-item list-group-item-action">No messages yet</a>
-                </div>
-            {% endif %}
-            {% if topic.isAuthorOfTopic(userId) %}
-            <div class="col-3">
-                <div class="btn-group" role="group" >
-                    <a href="{{ path('edit_topic',{'id': topic.id}) }}" class="btn btn-info">Edit</a>
-                    <a href="{{ path('close',{id: topic.id}) }}" class="btn btn-warning">Close</a>
-                    <a href="{{ path('delete_topic',{id: topic.id}) }}" class="btn btn-danger">Delete</a>
-                </div>
-            </div>
-            {% endif %}
-
-
-        </div>
         {% endfor %}
     </div>
-
 {% endblock %}

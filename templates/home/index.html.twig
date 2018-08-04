@@ -1,17 +1,7 @@
 {% extends 'base.html.twig' %}
-
 {% block body %}
-    <style>
-
-    </style>
-
-
     <div class="container" style="padding: 10px;">
-        {#<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">#}
-            {#<span class="navbar-toggler-icon"></span>#}
-        {#</button>#}
         <div class="row" style="padding-bottom: 10px">
-
             <div class="col-6">
                 {{ form_start(form) }}
                 {{ form_widget(form.question) }}
@@ -19,21 +9,16 @@
             <div class="col-4">
                 {{ form_widget(form.filter) }}
             </div>
-
             <div class="col-2">
                 {{ form_widget(form.save) }}
                 {{ form_end(form) }}
             </div>
-
         </div>
         {% for  section in sections_list %}
             <div class="list-group" style="text-align: center">
-                <a href="/section/{{ section.id }}" class="list-group-item list-group-item-action">{{ section.name }}</a>
+                <a href="/section/{{ section.id }}" class="list-group-item list-group-item-action">{{ section.name }}
+                </a>
             </div>
         {% endfor %}
     </div>
-
-</div>
-</nav>
-
 {% endblock %}

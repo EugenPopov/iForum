@@ -1,56 +1,62 @@
 {% extends 'base.html.twig' %}
-
-
 {% block body %}
-
     <div class="container center_style">
-        <div class="row">
-            <div class="col-4"><a href="{{ path('home')}}" class="badge badge-success">{{ topic.section.name }} </a> ►<a href="{{ path('form',{'id': topic.section.getId}) }} "class="badge badge-success">{{ topic.name }}</a></div>
-        </div>
-        <div class="row">
-            <div class="col-4">Author</div>
-            <div class="col-4">Text</div>
-            <div class="col-4">Date</div>
-        </div>
-{% for message in messages %}
-
-    <div class="row" style="outline: rgb(150, 136, 136) solid thin;">
-        <div class="col-2">
-            Author:{{ message.author.username }}<img src="/uploads/{{ message.author.getImage() }}" class="rounded" width="140px" >
-        </div>
-
+    <div class="row">
         <div class="col-4">
-            {{ message.text }}
+            <a href="{{ path('home')}}" class="badge badge-success">{{ topic.section.name }}
+            </a> ►
+            <a href="{{ path('form',{'id': topic.section.getId}) }} "class="badge badge-success">{{ topic.name }}
+            </a>
         </div>
-
-        <div class="col-4">
-            {{ message.date }}
-        </div>
-    <div class="col-2">
-        {% if is_granted('ROLE_ADMIN')  or message.isAuthorofMessage(user_id)%}
-            <a href="/edit/message/{{ message.id }}" class="badge badge-pill badge-info">edit</a>
-            <a href="/delete/message/{{ message.id }}" class="badge badge-pill badge-info">delete</a>
-        {% endif %}
-
     </div>
-    </div>
-
-
-{% endfor %}
-   {% if topic.close %}
-       <p class="text-monospace">Topic is closed</p>
-   {% else %}
+    {% if messages is not empty %}
+        {% for message in messages %}
+            <div class="row" style="outline: rgb(150, 136, 136) solid thin;">
+                <div class="col-2" style="outline: rgb(150, 136, 136) solid thin;">
+                    Author:{{ message.author.username }}
+                    <img src="/uploads/{{ message.author.getImage() }}" class="rounded" width="140px" >
+                </div>
+                <div class="col-4" style="outline: rgb(150, 136, 136) solid thin;">
+                    {{ message.text }}
+                </div>
+                <div class="col-4" >
+                    {{ message.date }}
+                </div>
+                <div class="col-2">
+                    {% if is_granted('ROLE_ADMIN')  or message.isAuthorofMessage(user_id)%}
+                        <a href="/edit/message/{{ message.id }}" class="badge badge-pill badge-info">edit
+                        </a>
+                        <a href="/delete/message/{{ message.id }}" class="badge badge-pill badge-info">delete
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="text-monospace">Write First Message
+        </p>
+    {% endif %}
+    {% if topic.close %}
+        <p class="text-monospace">Topic is closed
+        </p>
+    {% else %}
         {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
             <br>
-
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
-
-
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
         {% else %}
-            <p class="text-monospace">Log in to write messages</p>
+            <p class="text-monospace">Log in to write messages
+            </p>
         {% endif %}
-    </div>
+        </div>
     {% endif %}
+{% endblock %}
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
 {% endblock %}

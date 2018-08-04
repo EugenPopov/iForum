@@ -96,7 +96,14 @@ class Users implements UserInterface, \Serializable
     }
     public function eraseCredentials()
     {
+
     }
+
+    public function setRoles($roles): void
+    {
+        $this->roles = $roles;
+    }
+
     public function getRoles()
     {
         return $this->roles;

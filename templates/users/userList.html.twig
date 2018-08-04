@@ -1,19 +1,29 @@
 {% extends 'base.html.twig' %}
-
 {% block body %}
-<div class="container">
-{% for user in users %}
-    <div class="row" >
-        <div class="col-2" style="border-style: ridge">
-            ID: {{ user.id }}
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <a href="{{ path('admin') }}" class="badge badge-info">Admin
+                </a>
+            </div>
         </div>
-        <div class="col-9" style="border-style: ridge">
-            <a href="/user/{{ user.id }}">{{ user.username }}</a>
-        </div>
+        {% for user in users %}
+            <div class="list-group">
+                <div class="row">
+                    <div class="col-3">
+                        <a class="list-group-item list-group-item-action">ID: {{ user.id }}
+                        </a>
+                    </div>
+                    <div class="col-7">
+                        <a class="list-group-item list-group-item-action">{{ user.username }}
+                        </a>
+                    </div>
+                    <div class="col-2">
+                        <a href="{{ path('give_admin',{id: user.id}) }}" class="list-group-item list-group-item-action">Give Admin
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
-
-
-
-{% endfor %}
-</div>
 {% endblock %}

@@ -90,7 +90,10 @@ class TopicController extends Controller
         $em = $this->getDoctrine()->getManager();
         $topics = $em->getRepository(Topics::class)->findBy(['section'=>$id]);
 
+        if($this->getUser() != null)
         $userId =  $this->getUser()->getId();
+        else
+            $userId = 0;
 
         return $this->render('topics/topics.html.twig',['topics'=>$topics, 'id'=>$id,'userId'=>$userId]);
     }
