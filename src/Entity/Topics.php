@@ -38,7 +38,7 @@ class Topics
     private $name;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Users", inversedBy="topics")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="topics")
      * @ORM\JoinColumn(nullable=true)
      */
     private $author;
@@ -121,16 +121,21 @@ class Topics
         return $this;
     }
 
-    public function getAuthor(): ?string
+    public function getAuthor(): Users
     {
         return $this->author;
     }
 
-    public function setAuthor(string $author): self
+    public function setAuthor(Users $author): self
     {
         $this->author = $author;
 
         return $this;
+    }
+
+    public function isAuthorOfTopic(int $userId): bool
+    {
+        return $this->getAuthor()->getId() === $userId;
     }
 
 }

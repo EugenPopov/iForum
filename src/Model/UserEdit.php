@@ -2,14 +2,15 @@
 
 namespace App\Model;
 
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
 
 class UserEdit
 {
 
     private $userName;
-    
-    private $image;
+
 
     private $email;
 
@@ -18,11 +19,7 @@ class UserEdit
      *     message = "Wrong value for your current password"
      * )
      */
-    private $oldPassword;
-    
-    private $newPassword;
-    
-    private $plainPassword;
+    private $Password;
 
     /**
      * @return mixed
@@ -38,22 +35,6 @@ class UserEdit
     public function setUserName($userName): void
     {
         $this->userName = $userName;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param mixed $image
-     */
-    public function setImage($image): void
-    {
-        $this->image = $image;
     }
 
     /**
@@ -75,54 +56,17 @@ class UserEdit
     /**
      * @return mixed
      */
-    public function getOldPassword()
+    public function getPassword()
     {
-        return $this->oldPassword;
+        return $this->Password;
     }
 
     /**
      * @param mixed $oldPassword
      */
-    public function setOldPassword($oldPassword): void
+    public function setPassword($Password): void
     {
-        $this->oldPassword = $oldPassword;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNewPassword()
-    {
-        return $this->newPassword;
-    }
-
-    /**
-     * @param mixed $newPassword
-     */
-    public function setNewPassword($newPassword): void
-    {
-        $this->newPassword = $newPassword;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPlainPassword()
-    {
-        return $this->plainPassword;
-    }
-
-    /**
-     * @param mixed $plainPassword
-     */
-    public function setPlainPassword($plainPassword): void
-    {
-        $this->plainPassword = $plainPassword;
-    }
-
-    public function isTrueOldPassword($currentPassword)
-    {
-        return $this->oldPassword === $currentPassword;
+        $this->Password = $Password;
     }
     
     

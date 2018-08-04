@@ -1,20 +1,30 @@
 {% extends 'base.html.twig'%}
 
 {% block body %}
-    `   <div class="container" style="border: 5px double black">
-    <a href="/">HOME</a>
+    <br>
+    <div class="container" style="outline: solid">
+    <br>
+    <div class="btn-group" role="group" aria-label="QQ">
+        <a href="{{ path('changeAvatar') }}" class="btn btn-secondary">Change Avatar</a>
+        <a href="{{ path('edit_user') }}" class="btn btn-secondary">Edit User Name and Email</a>
+        <a href="{{ path('changePassword') }}" class="btn btn-secondary">ChangePassword</a>
+    </div>
+
     <div class="row">
 
         <div class="col-md-3 col-md-offset-5">
             <h1>User Name: {{ user.username }}</h1>
-            <img src="/uploads/{{ user.image }}" alt="Picture not Found" width="300px" height="300px">
         </div>
-        <div class="col-3"><h4>Email: {{ user.email }}</h4></div>
-        <div class="col-3">Status:  {{ user.roles[0] }}
-
-            <a href="{{ path('esit_user') }}">Edit</a>
-
-
+        <div class="col-3">
+            <h4>Email: {{ user.email }}</h4>
         </div>
+        <div class="col-3">
+            Status:  {{ user.roles[0] }}
+        </div>
+
     </div>
+    <div class="row" style="padding-left: 30px">
+        <img src="/uploads/{{ user.image }}" alt="Picture not Found" width="300px" height="300px" style="outline: solid">
+    </div>
+
 {% endblock %}

@@ -28,8 +28,8 @@
         </div>
     <div class="col-2">
         {% if is_granted('ROLE_ADMIN')  or message.isAuthorofMessage(user_id)%}
-            <a href="/edit/message/{{ message.id }}">edit</a>
-            <a href="/delete/message/{{ message.id }}">delete</a>
+            <a href="/edit/message/{{ message.id }}" class="badge badge-pill badge-info">edit</a>
+            <a href="/delete/message/{{ message.id }}" class="badge badge-pill badge-info">delete</a>
         {% endif %}
 
     </div>
@@ -37,16 +37,20 @@
 
 
 {% endfor %}
+   {% if topic.close %}
+       <p class="text-monospace">Topic is closed</p>
+   {% else %}
         {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
             <br>
-            <div class="row">
+
     {{ form_start(form) }}
     {{ form_widget(form) }}
     {{ form_end(form) }}
 
-            </div>
+
         {% else %}
-        <h3>Log In to write messages</h3>
+            <p class="text-monospace">Log in to write messages</p>
         {% endif %}
     </div>
+    {% endif %}
 {% endblock %}

@@ -69,10 +69,9 @@ class MessageController extends Controller
                     'No product found for id '.$id
                 );
             }
-            $message->setText($message->getText());
             $em->flush();
 
-            $this->redirectToRoute('home');
+            return $this->redirectToRoute('list',['id'=>$message->getTopics()->getId()]);
         }
         return $this->render('editing/editMessage.html.twig',['form'=>$form->createView()]);
     }
