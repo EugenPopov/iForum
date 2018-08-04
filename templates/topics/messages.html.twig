@@ -4,9 +4,8 @@
 {% block body %}
 
     <div class="container center_style">
-        {% include 'header.html.twig' %}
         <div class="row">
-            <div class="col-4"><a href="{{ path('form',{'id': topic.section.getId}) }}">{{ topic.section.name }} </a> <a href="{{ path('form',{'id': topic.id}) }}">{{ topic.name }}</a></div>
+            <div class="col-4"><a href="{{ path('home')}}" class="badge badge-success">{{ topic.section.name }} </a> ►<a href="{{ path('form',{'id': topic.section.getId}) }} "class="badge badge-success">{{ topic.name }}</a></div>
         </div>
         <div class="row">
             <div class="col-4">Author</div>
@@ -14,11 +13,19 @@
             <div class="col-4">Date</div>
         </div>
 {% for message in messages %}
-    <div class="row">
 
-        <div class="col-2" style="border-style: inset">Author:{{ message.author.username }}<img src="/uploads/{{ message.author.getImage() }}" width="150px" height="150px"></div>
-        <div class="col-4">{{ message.text }}</div>
-        <div class="col-4" style="border-style: inset">{{ message.date }}</div>
+    <div class="row" style="outline: rgb(150, 136, 136) solid thin;">
+        <div class="col-2">
+            Author:{{ message.author.username }}<img src="/uploads/{{ message.author.getImage() }}" class="rounded" width="140px" >
+        </div>
+
+        <div class="col-4">
+            {{ message.text }}
+        </div>
+
+        <div class="col-4">
+            {{ message.date }}
+        </div>
     <div class="col-2">
         {% if is_granted('ROLE_ADMIN')  or message.isAuthorofMessage(user_id)%}
             <a href="/edit/message/{{ message.id }}">edit</a>
@@ -28,11 +35,16 @@
     </div>
     </div>
 
+
 {% endfor %}
         {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+            <br>
+            <div class="row">
     {{ form_start(form) }}
     {{ form_widget(form) }}
     {{ form_end(form) }}
+
+            </div>
         {% else %}
         <h3>Log In to write messages</h3>
         {% endif %}

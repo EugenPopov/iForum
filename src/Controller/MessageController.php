@@ -86,8 +86,6 @@ class MessageController extends Controller
 
         $topic_repository = $doctrine->getRepository(Topics::class)->findOneBy(['id'=>$id]);
 
-
-
         $message_repository = $doctrine->getRepository(Messages::class);
         $message_list = $message_repository->findBy(['topics'=>$id]);
         if ($this->getUser() == Null){
@@ -102,7 +100,7 @@ class MessageController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $messages->setTopics($message_list[0]->getTopics());
+            $messages->setTopics($topic_repository);
             $messages->setAuthor($this->getUser());
             $entity_manager = $this->getDoctrine()->getManager();
             $entity_manager->persist($messages);

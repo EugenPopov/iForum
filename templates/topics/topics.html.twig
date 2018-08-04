@@ -2,19 +2,26 @@
 
 {% block body %}
     <div class="container center_style">
-        {{ id }}
-        <div class="row"  style="background-color: #5eb5e0">
-            {% include 'header.html.twig' %}
-        </div>
         {% for topic in topics %}
         <div class="row">
-            <div class="col-4" style="border: 4px double black"><a href="/topic/{{ topic.id }}">{{ topic.name }}</a></div>
+            <div class="col-4 list-group" >
+                <a href="/topic/{{ topic.id }}" class="list-group-item list-group-item-action">{{ topic.name }}</a>
+            </div>
+
             {% if topic.LastMessage is not empty %}
-                <div class="col-4" style="border: 4px double black">{{ topic.LastMessage.text }}</div>
-                <div class="col-4" style="border: 4px double black">{{ topic.LastMessage.date }}</div>
+                <div class="col-4 list-group" >
+                    <a class="list-group-item list-group-item-action">{{ topic.LastMessage.text }}</a>
+                </div>
+                <div class="col-4 list-group">
+                    <a class="list-group-item list-group-item-action">{{ topic.LastMessage.date }}</a>
+                </div>
             {% else %}
-                <div class="col-4" style="border: 4px double black">No messages yet</div>
-                <div class="col-4" style="border: 4px double black">No messages yet</div>
+                <div class="col-4 list-group">
+                    <a class="list-group-item list-group-item-action">No messages yet</a>
+                </div>
+                <div class="col-4 list-group">
+                    <a class="list-group-item list-group-item-action">No messages yet</a>
+                </div>
             {% endif %}
 
 

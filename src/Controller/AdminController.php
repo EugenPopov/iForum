@@ -3,10 +3,12 @@
 namespace App\Controller;
 
 
+use App\Entity\Users;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class AdminController
+class AdminController extends Controller
 {
 
     /**
@@ -14,8 +16,9 @@ class AdminController
      */
     public function admin()
     {
-        echo '<a href="/userlist">';
-        return new Response('u are in adminke');
+        $q = $this->getDoctrine()->getRepository(Users::class)->findOneBy(['id'=>3]);
+
+        return new Response(var_dump($q));
     }
 
 }

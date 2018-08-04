@@ -18,6 +18,8 @@ class TopicController extends Controller
      */
     public function addTopic(Request $request,$id=null)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $user = new Topics();
         $form = $this->createForm(AddTopic::class, $user);
 
