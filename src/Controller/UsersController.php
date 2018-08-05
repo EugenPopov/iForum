@@ -17,8 +17,6 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UsersController extends Controller
 {
-
-
     /**
      * @Route("/edit/user", name="edit_user")
      */

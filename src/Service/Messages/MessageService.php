@@ -2,7 +2,6 @@
 
 namespace App\Service\Messages;
 
-
 use App\Entity\Messages;
 use App\Entity\Topics;
 use App\Repository\MessagesRepository;
@@ -48,9 +47,5 @@ class MessageService extends AbstractController
                     $entityManager->persist($topic);
                     $entityManager->flush();
          }
-
-
-
-
     }
 }

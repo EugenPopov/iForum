@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: eugene
- * Date: 05.08.18
- * Time: 12:48
- */
 
 namespace App\Tests;
 
@@ -14,10 +8,8 @@ use App\Form\UserType;
 use App\Model\Search;
 use Symfony\Component\Form\Test\TypeTestCase;
 
-
 class FormTest extends TypeTestCase
 {
-
     public function testSearchMessage()
     {
         $search_data=[
@@ -42,5 +34,4 @@ class FormTest extends TypeTestCase
             $this->assertArrayHasKey($key, $children);
         }
     }
-
 }

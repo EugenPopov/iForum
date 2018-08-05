@@ -2,15 +2,12 @@
 
 namespace App\Controller;
 
-
 use App\Entity\Messages;
-use App\Entity\Sections;
 use App\Entity\Topics;
 use App\Form\EditTopicForm;
 use App\Service\User\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\AddTopic;
 

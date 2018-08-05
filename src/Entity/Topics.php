@@ -77,12 +77,12 @@ class Topics
         $this->last_message = $last_message;
     }
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getSection()
+    public function getSection(): Sections
     {
         return $this->section;
     }

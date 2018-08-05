@@ -2,14 +2,7 @@
 
 namespace App\Tests;
 
-
-use App\Controller\TopicController;
-use App\Entity\Topics;
-use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\Common\Persistence\ObjectRepository;
-use PHPUnit\Framework\TestCase;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\HttpKernel\Client;
 
 class ShowTest extends WebTestCase
 {
@@ -30,8 +23,6 @@ class ShowTest extends WebTestCase
         $crawler = $client->followRedirect();
 
         self::assertGreaterThan(0,$crawler->filter('Log Out')->count());
-
-
     }
 
     public function testAdmin()

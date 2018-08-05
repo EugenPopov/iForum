@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: eugene
- * Date: 01.08.18
- * Time: 12:19
- */
 
 namespace App\Controller;
 
@@ -12,7 +6,6 @@ use App\Service\Searching\FindByQuestion;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use App\Entity\Users;
 
 class SearchController extends Controller
 {

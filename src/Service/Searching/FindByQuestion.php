@@ -8,7 +8,6 @@ use App\Repository\MessagesRepository;
 use App\Repository\TopicsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-
 class FindByQuestion extends AbstractController
 {
     public function index($question)

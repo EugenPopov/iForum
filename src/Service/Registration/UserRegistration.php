@@ -2,8 +2,6 @@
 
 namespace App\Service\Registration;
 
-
-
 use App\Entity\Users;
 use App\Service\FileSystem\FileManager;
 use Doctrine\ORM\EntityManagerInterface;

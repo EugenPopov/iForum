@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: eugene
- * Date: 04.08.18
- * Time: 15:25
- */
 
 namespace App\Model;
 
@@ -22,7 +16,7 @@ class Avatar
     /**
      * @return mixed
      */
-    public function getImage()
+    public function getImage(): string
     {
         return $this->image;
     }

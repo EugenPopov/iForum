@@ -24,7 +24,7 @@ class UserEdit
     /**
      * @return mixed
      */
-    public function getUserName()
+    public function getUserName(): string
     {
         return $this->userName;
     }
@@ -40,7 +40,7 @@ class UserEdit
     /**
      * @return mixed
      */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -56,7 +56,7 @@ class UserEdit
     /**
      * @return mixed
      */
-    public function getPassword()
+    public function getPassword(): string
     {
         return $this->Password;
     }

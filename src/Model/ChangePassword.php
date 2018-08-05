@@ -40,7 +40,7 @@ class ChangePassword extends AbstractType
     /**
      * @return mixed
      */
-    public function getNewPassword()
+    public function getNewPassword(): string
     {
         return $this->newPassword;
     }
