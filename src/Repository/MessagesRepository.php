@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Messages;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * @method Messages|null find($id, $lockMode = null, $lockVersion = null)

@@ -2,20 +2,17 @@
 
 namespace App\Controller;
 
-
-
 use App\Form\EditMessageForm;
 use App\Repository\MessagesRepository;
 use App\Service\Messages\MessageService;
 use App\Service\User\UserService;
-use phpDocumentor\Reflection\Types\Null_;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Messages;
 use App\Form\AddMessage;
 use App\Entity\Topics;
+
 
 class MessageController extends Controller
 {
@@ -72,6 +69,7 @@ class MessageController extends Controller
 
         $message_repository = $entity_manager->getRepository(Messages::class);
         $message_list = $message_repository->findBy(['topics'=>$id]);
+
 
         $current_user = $user->getUserId();
 
