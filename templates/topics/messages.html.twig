@@ -24,9 +24,9 @@
                 </div>
                 <div class="col-2">
                     {% if is_granted('ROLE_ADMIN')  or message.isAuthorofMessage(user_id)%}
-                        <a href="/edit/message/{{ message.id }}" class="badge badge-pill badge-info">edit
+                        <a href="{{ path('edit_message',{'id': message.id}) }}" class="badge badge-pill badge-info">edit
                         </a>
-                        <a href="/delete/message/{{ message.id }}" class="badge badge-pill badge-info">delete
+                        <a href="{{ path('delete_message',{'id': message.id}) }}" class="badge badge-pill badge-info">delete
                         </a>
                     {% endif %}
                 </div>
@@ -51,12 +51,4 @@
         {% endif %}
         </div>
     {% endif %}
-{% endblock %}
-{% extends 'base.html.twig' %}
-{% block body %}
-    <div class="container">
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        {{ form_end(form) }}
-    </div>
 {% endblock %}

@@ -7,6 +7,7 @@ use App\Entity\Messages;
 use App\Entity\Sections;
 use App\Entity\Topics;
 use App\Form\EditTopicForm;
+use App\Service\User\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -85,15 +86,12 @@ class TopicController extends Controller
     /**
      * @Route("/section/{id}", name="form")
      */
-    public function showTopics($id)
+    public function showTopics($id, UserService $service)
     {
         $em = $this->getDoctrine()->getManager();
         $topics = $em->getRepository(Topics::class)->findBy(['section'=>$id]);
 
-        if($this->getUser() != null)
-        $userId =  $this->getUser()->getId();
-        else
-            $userId = 0;
+        $userId = $service->getUserId();
 
         return $this->render('topics/topics.html.twig',['topics'=>$topics, 'id'=>$id,'userId'=>$userId]);
     }

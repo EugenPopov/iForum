@@ -26,7 +26,7 @@
                         </a>
                     </div>
                 {% endif %}
-                {% if topic.isAuthorOfTopic(userId) %}
+                {% if topic.isAuthorOfTopic(userId) or is_granted('ROLE_ADMIN')%}
                     <div class="col-3">
                         <div class="btn-group" role="group" >
                             <a href="{{ path('edit_topic',{'id': topic.id}) }}" class="btn btn-info">Edit

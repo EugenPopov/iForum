@@ -98,7 +98,6 @@ class Users implements UserInterface, \Serializable
     {
 
     }
-
     public function setRoles($roles): void
     {
         $this->roles = $roles;

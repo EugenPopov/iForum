@@ -8,13 +8,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Messages;
-use App\Entity\Topics;
-use App\Repository\MessagesRepository;
-use App\Repository\TopicsRepository;
 use App\Service\Searching\FindByQuestion;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Users;

@@ -21,14 +21,12 @@ class Sections
      */
     private $name;
 
-
-
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -39,7 +37,5 @@ class Sections
 
         return $this;
     }
-    public function __toInteger(){
-        return $this->id;
-    }
+
 }

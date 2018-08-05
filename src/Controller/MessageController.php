@@ -6,6 +6,8 @@ namespace App\Controller;
 
 use App\Form\EditMessageForm;
 use App\Repository\MessagesRepository;
+use App\Service\Messages\MessageService;
+use App\Service\User\UserService;
 use phpDocumentor\Reflection\Types\Null_;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,35 +22,18 @@ class MessageController extends Controller
     /**
      * @Route("/delete/message/{id}", name="delete_message")
      */
-    public function deleteMessage($id, MessagesRepository $query)
+    public function deleteMessage($id, MessagesRepository $query, MessageService $messageService)
     {
         $em = $this->getDoctrine()->getManager();
         $MRepository = $em->getRepository(Messages::class);
-        $message = $MRepository->find($id);
+        $message = $MRepository->findOneBy(['id'=>$id]);
 
         if($message->isAuthorOfMessage($this->getUser()->getId())){
-            $topic_id = $message->getTopics()->getId();
+            $messageService->DeleteMessageAction($message, $em, $MRepository, $query);
 
-            if($message->getTopics()->getLastMessage() != null){
-                if($message->getText() == $message->getTopics()->getLastMessage()->getText()) {
-                    $message->getTopics()->setLastMessage(null);
-                    $em->persist($message);
-                }
-            }
-            $em->remove($message);
-            $em->flush();
-
-            $message_list = $query->lastMessage($MRepository->findBy(['topics'=>$topic_id]));
-            $message->getTopics()->setLastMessage($message_list);
-
-            $em->persist($message);
-            $em->remove($message);
-            $em->flush();
-
-
-            return $this->redirectToRoute('list',['id'=>$message->getTopics()->getId()]);}
+            return $this->redirectToRoute('list',['id'=>$message->getTopics()->getId()]);
+        }
         else{
-
             return $this->redirectToRoute('home');
         }
     }
@@ -79,39 +64,23 @@ class MessageController extends Controller
     /**
      * @Route("/topic/{id}", name="list")
      */
-    public function showMessages(Request $request,$id)
+    public function showMessages(Request $request, $id, MessageService $addMessageService, UserService $user)
     {
-        $doctrine = $this->getDoctrine();
+        $entity_manager = $this->getDoctrine()->getManager();
 
-        $topic_repository = $doctrine->getRepository(Topics::class)->findOneBy(['id'=>$id]);
+        $topic_repository = $entity_manager->getRepository(Topics::class)->findOneBy(['id'=>$id]);
 
-        $message_repository = $doctrine->getRepository(Messages::class);
+        $message_repository = $entity_manager->getRepository(Messages::class);
         $message_list = $message_repository->findBy(['topics'=>$id]);
-        if ($this->getUser() == Null){
-            $current_user = 0;
-        }
-        else{
-            $current_user = $this->getUser()->getId();
-        }
+
+        $current_user = $user->getUserId();
 
         $messages = new Messages();
         $form = $this->createForm(AddMessage::class,$messages);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $messages->setTopics($topic_repository);
-            $messages->setAuthor($this->getUser());
-            $entity_manager = $this->getDoctrine()->getManager();
-            $entity_manager->persist($messages);
-            $entity_manager->flush();
-            $last_id = $messages->getId();
-            $last_message = $message_repository->findOneBy(['id'=>$last_id]);
-
-            $product = $entity_manager->getRepository(Topics::class)->find($id);
-
-            $product->setLastMessage($last_message);
-
-            $entity_manager->flush();
+            $addMessageService->AddMessageAction($entity_manager,$topic_repository,$messages,$message_repository);
 
             return $this->redirectToRoute('list',['id'=>$id]);
         }

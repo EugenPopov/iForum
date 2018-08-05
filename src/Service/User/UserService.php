@@ -1,15 +1,18 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: eugene
- * Date: 05.08.18
- * Time: 1:16
- */
 
 namespace App\Service\User;
 
 
-class UserService
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+class UserService extends AbstractController
 {
 
+    public function getUserId()
+    {
+        if($this->getUser() != null)
+            return $this->getUser()->getId();
+        else
+            return 0;
+    }
 }

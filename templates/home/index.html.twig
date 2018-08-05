@@ -16,7 +16,7 @@
         </div>
         {% for  section in sections_list %}
             <div class="list-group" style="text-align: center">
-                <a href="/section/{{ section.id }}" class="list-group-item list-group-item-action">{{ section.name }}
+                <a href="{{  path('form',{'id': section.id}) }}" class="list-group-item list-group-item-action">{{ section.name }}
                 </a>
             </div>
         {% endfor %}

@@ -49,12 +49,12 @@ class Messages
     }
 
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getTopics()
+    public function getTopics(): Topics
     {
         return $this->topics;
     }
@@ -88,7 +88,7 @@ class Messages
         return $this;
     }
 
-    public function getAuthor(): ?Users
+    public function getAuthor(): Users
     {
         return $this->author;
     }

@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Form\UserType;
 use App\Entity\Users;
 use App\Service\FileSystem\FileManager;
+use App\Service\Registration\UserRegistration;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,22 +17,16 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/register", name="user_registration")
      */
-    public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder, FileManager $fileManager)
+    public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder, FileManager $fileManager, UserRegistration $registration)
     {
         $user = new Users();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if($fileName = $fileManager->upload($user->getImage())){
-                $user->setImage($fileName);
-            }
-            $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
-            $user->setPassword($password);
-
             $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
+
+            $registration->registerAction($passwordEncoder,$user,$em,$fileManager);
 
             return $this->redirectToRoute('home');
         }
