@@ -9,7 +9,6 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserRegistration
 {
-
     public function registerAction(UserPasswordEncoderInterface $passwordEncoder, Users $users, EntityManagerInterface $entityManager, FileManager $fileManager)
     {
         if($fileName = $fileManager->upload($users->getImage())){

@@ -9,7 +9,8 @@
                 </div>
                 {% if topic.LastMessage is not empty %}
                     <div class="col-3 list-group text-truncate" >
-                        <a class="list-group-item list-group-item-action">{{ topic.LastMessage.text }}
+                        <a class="list-group-item list-group-item-action">
+                            Last message : {{ topic.LastMessage.text }}<br>
                         </a>
                     </div>
                     <div class="col-2 list-group text-truncate">
@@ -40,5 +41,11 @@
                 {% endif %}
             </div>
         {% endfor %}
+        <br>
+        <div class="row">
+        <div class="navigation text-center">
+            {{ knp_pagination_render(result) }}
+        </div>
+        </div>
     </div>
 {% endblock %}

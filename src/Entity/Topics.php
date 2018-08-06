@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Traits\IsAuthorTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,6 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Topics
 {
+
+    use IsAuthorTrait;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -82,7 +85,7 @@ class Topics
         return $this->id;
     }
 
-    public function getSection(): Sections
+    public function getSection(): ?Sections
     {
         return $this->section;
     }

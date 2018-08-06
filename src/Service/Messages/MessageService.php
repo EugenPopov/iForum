@@ -9,12 +9,12 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class MessageService extends AbstractController
+class MessageService
 {
-    public function AddMessageAction(ObjectManager $entityManager, Topics $topics, Messages $messages, MessagesRepository $messagesRepository)
+    public function AddMessageAction(ObjectManager $entityManager, Topics $topics, Messages $messages, MessagesRepository $messagesRepository, $loggedUser)
     {
         $messages->setTopics($topics);
-        $messages->setAuthor($this->getUser());
+        $messages->setAuthor($loggedUser);
 
         $entityManager->persist($messages);
         $entityManager->flush();

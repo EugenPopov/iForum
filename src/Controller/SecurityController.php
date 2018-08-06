@@ -10,7 +10,13 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends Controller
 {
     /**
+     * This method allow u to login on forum
+     *
+     * @var error have info if your data is suitable
+     * @var lastUsername fill username form with last filled username
+     *
      * @Route("/login", name="login")
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function loginAction(Request $request, AuthenticationUtils $authUtils)
     {

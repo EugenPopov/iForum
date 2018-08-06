@@ -62,7 +62,7 @@ class Users implements UserInterface, \Serializable
     {
         return $this->id;
     }
-    public function getUsername(): string
+    public function getUsername(): ?string
     {
         return $this->username;
     }
@@ -70,7 +70,7 @@ class Users implements UserInterface, \Serializable
     {
         $this->username = $username;
     }
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -78,7 +78,7 @@ class Users implements UserInterface, \Serializable
     {
         $this->email = $email;
     }
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -103,7 +103,7 @@ class Users implements UserInterface, \Serializable
         $this->roles = $roles;
     }
 
-    public function getRoles():array
+    public function getRoles(): array
     {
         return $this->roles;
     }
@@ -111,7 +111,7 @@ class Users implements UserInterface, \Serializable
     {
         return null;
     }
-    public function getPlainPassword(): string
+    public function getPlainPassword(): ?string
     {
         return $this->plainPassword;
     }

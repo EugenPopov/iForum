@@ -12,7 +12,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class HomePageController extends Controller
 {
     /**
+     * This method of home page
+     *
+     * @var search_form is form where u can look for topics and messages
+     * @var section_list get all sections list
+     *
      * @Route("/", name="home")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function index(Request $request)
     {

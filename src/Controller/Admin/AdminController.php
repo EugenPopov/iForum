@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Sections;
 use App\Entity\Users;
@@ -13,7 +13,12 @@ class AdminController extends Controller
 {
 
     /**
+     * This method provides to admin list of all users
+     *
+     * @var users
+     *
      * @Route("/admin/userlist", name="user_list")
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function UserList()
     {
@@ -24,6 +29,8 @@ class AdminController extends Controller
     }
 
     /**
+     * This method shows all functions allowed to admin
+     *
      * @Route("/admin", name="admin")
      */
     public function admin()
@@ -33,7 +40,12 @@ class AdminController extends Controller
     }
 
     /**
+     * This method set user role to ROLE_ADMIN
+     *
+     * @var user get needed user
+     *
      * @Route("/admin/give_admin{id}", name="give_admin")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function giveAdmin($id)
     {
@@ -49,7 +61,12 @@ class AdminController extends Controller
     }
 
     /**
+     * This method allow admin to add section
+     *
+     * @var form create form which u'll have to fill
+     *
      * @Route("/admin/add_section", name="add_section")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function AddSection(Request $request)
     {

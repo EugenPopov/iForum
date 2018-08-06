@@ -1,6 +1,6 @@
 {% extends '_base.html.twig' %}
 {% block body %}
-    <div class="container center_style">
+    <div class="container center_style" style="margin-bottom: 50px">
     <div class="row">
         <div class="col-4">
             <a href="{{ path('home')}}" class="badge badge-success">{{ topic.section.name }}
@@ -23,7 +23,7 @@
                     {{ message.date }}
                 </div>
                 <div class="col-2">
-                    {% if is_granted('ROLE_ADMIN')  or message.isAuthorofMessage(user_id)%}
+                    {% if message.isAuthorof(message,current_user)%}
                         <a href="{{ path('edit_message',{'id': message.id}) }}" class="badge badge-pill badge-info">edit
                         </a>
                         <a href="{{ path('delete_message',{'id': message.id}) }}" class="badge badge-pill badge-info">delete
@@ -49,6 +49,10 @@
             <p class="text-monospace">Log in to write messages
             </p>
         {% endif %}
-        </div>
     {% endif %}
+
+        <ul class="navigation">
+            {{ knp_pagination_render(result) }}
+        </ul>
+    </div>
 {% endblock %}

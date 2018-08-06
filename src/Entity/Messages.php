@@ -2,14 +2,15 @@
 
 namespace App\Entity;
 
+use App\Traits\IsAuthorTrait;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MessagesRepository")
  */
 class Messages
 {
+    use IsAuthorTrait;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()

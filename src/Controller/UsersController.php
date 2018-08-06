@@ -18,9 +18,14 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class UsersController extends Controller
 {
     /**
+     * This method allow u to change your userName and email
+     *
+     * @var newUser create and User exemplar
+     * @var form create editing form
+     *
      * @Route("/edit/user", name="edit_user")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-
     public function EditUser(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -46,11 +51,13 @@ class UsersController extends Controller
 
 
     /**
+     * This method show your profile if u're authorized
+     *
+     * @var user has your user info
+     *
      * @Route("/profile", name="profile")
      */
     public function ShowUser()
-
-
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
@@ -61,6 +68,10 @@ class UsersController extends Controller
     }
 
     /**
+     * This method allow u to change your profile avatar
+     *
+     * @var form create form
+     *
      * @Route("/change_avatar", name="changeAvatar")
      */
     public function ChangeImage(Request $request,FileManager $fileManager)
@@ -87,6 +98,11 @@ class UsersController extends Controller
     }
 
     /**
+     * This method allow u to change password
+     *
+     * @var user has your user info
+     * @var form create form where u have to write your old and new password
+     *
      * @Route("/change_password", name="changePassword")
      */
     public function ChangePassword(Request $request,UserPasswordEncoderInterface $encoder)
