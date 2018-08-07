@@ -1,3 +1,67 @@
 
 logout:
   path: /logout
+
+home:
+  path: /
+  controller: App\Controller\HomePageController::index
+
+form:
+  path: /section/{id}
+  controller: App\Controller\TopicController::showTopics
+
+delete_topic:
+  path: /delete/topic/{id}
+  controller: App\Controller\TopicController::deleteTopic
+
+edit_topic:
+  path: /edit/topic/{id}
+  controller: App\Controller\TopicController::EditTopic
+
+add_topic:
+  path: /add_topic/{id}
+  controller: App\Controller\TopicController::addTopic
+
+close:
+  path: /close_topic/{id}
+  controller: App\Controller\TopicController::CloseTopic
+
+delete_message:
+  path: /delete/message/{id}
+  controller: App\Controller\MessageController::deleteMessage
+
+edit_message:
+  path: /edit/message/{id}
+  controller: App\Controller\MessageController::editMessage
+
+list:
+  path: /topic/{id}
+  controller: App\Controller\MessageController::showMessages
+
+user_registration:
+  path: /register
+  controller: App\Controller\RegistrationController::registerAction
+
+search:
+  path: /search
+  controller: App\Controller\SearchController::ShowResult
+
+login:
+  path: /login
+  controller: App\Controller\SecurityController::loginAction
+
+edit_user:
+  path: /edit/user
+  controller: App\Controller\UsersController::EditUser
+
+profile:
+  path: /profile
+  controller: App\Controller\UsersController::ShowUser
+
+changeAvatar:
+  path: /change_avatar
+  controller: App\Controller\UsersController::ChangeImage
+
+changePassword:
+  path: /change_password
+  controller: App\Controller\UsersController::ChangePassword
