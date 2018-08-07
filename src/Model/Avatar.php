@@ -23,7 +23,7 @@ class Avatar
     /**
      * @return mixed
      */
-    public function getImage(): string
+    public function getImage()
     {
         return $this->image;
     }
@@ -31,7 +31,7 @@ class Avatar
     /**
      * @param mixed $image
      */
-    public function setImage($image): void
+    public function setImage($image)
     {
         $this->image = $image;
     }

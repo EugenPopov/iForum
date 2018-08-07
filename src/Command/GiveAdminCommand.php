@@ -1,12 +1,5 @@
 <?php
 
-/*
- * This file is part of the "php-paradise/array-keys-converter" package.
- * (c) Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace App\Command;
 
 use App\Entity\Users;
@@ -53,7 +46,7 @@ class GiveAdminCommand extends ContainerAwareCommand
 
             return;
         }
-        $user->setRoles('ROLE_ADMIN');
+        $user->setRoles(['ROLE_ADMIN']);
         $em->flush();
         $output->writeln('Role changed successfully');
     }

@@ -60,7 +60,7 @@ class UserEdit
     /**
      * @return mixed
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->Password;
     }

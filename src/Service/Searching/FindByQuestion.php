@@ -31,6 +31,9 @@ class FindByQuestion
                 $TRepository = $entitymanager->getRepository(Topics::class);
                 $topics = $TRepository->getQuery($question);
 
+                if(empty($topics))
+                    return null;
+
                 foreach ($topics as $topic) {
                     $topic = $entitymanager->getRepository(Topics::class)->findOneBy(['section'=>$topic[1]]);
                     $results[] = ['1' => $topic->getId(),'name'=>$topic->getName()];

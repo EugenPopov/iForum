@@ -114,7 +114,7 @@ class TopicController extends Controller
             $entity_manager->flush();
             $last_id = $user->getId();
 
-            return $this->render('list', ['id'=>$last_id]);
+            return $this->redirectToRoute('list', ['id'=>$last_id]);
         }
         //$this->addSql("INSERT INTO sections (name) VALUES ('Авто'),('Кино'),('Музыка'),('ИТ'),('Бизнес')");
         return $this->render('topics/addTopic.html.twig', ['form'=>$form->createView()]);
@@ -142,7 +142,7 @@ class TopicController extends Controller
         $result = $paginator->paginate(
             $topics,
             $request->query->getInt('page', 1),
-            $request->query->getInt('limit', 2)
+            $request->query->getInt('limit', 7)
         );
 
         $userId = $service->getUserId();

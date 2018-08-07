@@ -108,7 +108,7 @@ class MessageController extends Controller
         $result = $paginator->paginate(
             $message_list,
             $request->query->getInt('page', 1),
-            $request->query->getInt('limit', 3)
+            $request->query->getInt('limit', 8)
         );
 
 

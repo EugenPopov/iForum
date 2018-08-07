@@ -65,6 +65,7 @@ class UsersController extends Controller
      * @var user has your user info
      *
      * @Route("/profile", name="profile")
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function ShowUser()
     {
@@ -82,6 +83,7 @@ class UsersController extends Controller
      * @var form create form
      *
      * @Route("/change_avatar", name="changeAvatar")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function ChangeImage(Request $request, FileManager $fileManager)
     {
@@ -112,6 +114,7 @@ class UsersController extends Controller
      * @var form create form where u have to write your old and new password
      *
      * @Route("/change_password", name="changePassword")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function ChangePassword(Request $request, UserPasswordEncoderInterface $encoder)
     {
