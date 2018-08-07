@@ -1,5 +1,15 @@
 <?php
 
+<<<<<<< HEAD
+=======
+/*
+ * This file is part of the "php-paradise/array-keys-converter" package.
+ * (c) Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+>>>>>>> cf1cec79d139e65c75ca13dbd425b25f00ca07a3
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
