@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file is part of the "php-paradise/array-keys-converter" package.
+ * (c) Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Controller;
 
 use App\Form\UserType;
@@ -20,6 +27,7 @@ class RegistrationController extends AbstractController
      * @var UserPasswordEncoderInterface is interface that can encode password to make it safe
      *
      * @Route("/register", name="user_registration")
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder, FileManager $fileManager, UserRegistration $registration)
@@ -35,6 +43,7 @@ class RegistrationController extends AbstractController
 
             return $this->redirectToRoute('home');
         }
+
         return $this->render(
             'registration/register.html.twig',
             ['form' => $form->createView()]

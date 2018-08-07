@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file is part of the "php-paradise/array-keys-converter" package.
+ * (c) Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Service\Messages;
 
 use App\Entity\Messages;
@@ -7,7 +14,6 @@ use App\Entity\Topics;
 use App\Repository\MessagesRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MessageService
 {
@@ -39,7 +45,7 @@ class MessageService
         $entityManager->flush();
 
 
-        if ($entityManager->getRepository(Messages::class)->findBy(['topics' => $topic_id]) != null) {
+        if (null != $entityManager->getRepository(Messages::class)->findBy(['topics' => $topic_id])) {
             $message_list = $query->lastMessage($MRepository->findOneBy(['topics' => $topic_id]));
             $topic = $entityManager->getRepository(Topics::class)->findOneBy(['id'=>$topic_id]);
 

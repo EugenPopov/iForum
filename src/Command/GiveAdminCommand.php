@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file is part of the "php-paradise/array-keys-converter" package.
+ * (c) Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Command;
 
 use App\Entity\Users;
@@ -28,6 +35,7 @@ class GiveAdminCommand extends ContainerAwareCommand
 
         if (empty($user)) {
             $output->writeln('Such a user doesn\'t exist');
+
             return;
         }
 
@@ -39,8 +47,10 @@ class GiveAdminCommand extends ContainerAwareCommand
             '/(y|yes|yeah)/'
         );
         $confirmResult = $helper->ask($input, $output, $confirm);
+
         if (!$confirmResult) {
             $output->writeln('Canceled');
+
             return;
         }
         $user->setRoles('ROLE_ADMIN');

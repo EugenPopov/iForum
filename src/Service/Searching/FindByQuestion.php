@@ -1,15 +1,19 @@
 <?php
 
+/*
+ * This file is part of the "php-paradise/array-keys-converter" package.
+ * (c) Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Service\Searching;
 
 use App\Entity\Messages;
-use App\Entity\Sections;
 use App\Entity\Topics;
 use App\Repository\MessagesRepository;
 use App\Repository\TopicsRepository;
-use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManager;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class FindByQuestion
 {
@@ -49,6 +53,7 @@ class FindByQuestion
 
                 break;
         }
+
         return $results;
     }
 }

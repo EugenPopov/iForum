@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file is part of the "php-paradise/array-keys-converter" package.
+ * (c) Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Repository;
 
 use App\Entity\Topics;
@@ -7,8 +14,8 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Topics|null find($id, $lockMode = null, $lockVersion = null)
- * @method Topics|null findOneBy(array $criteria, array $orderBy = null)
+ * @method null|Topics find($id, $lockMode = null, $lockVersion = null)
+ * @method null|Topics findOneBy(array $criteria, array $orderBy = null)
  * @method Topics[]    findAll()
  * @method Topics[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
@@ -23,9 +30,10 @@ class TopicsRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('q')
             ->select('IDENTITY(q.section)', 'q.name')
-            ->where("q.name LIKE :object")
+            ->where('q.name LIKE :object')
             ->setParameter('object', $object['question'])
             ->getQuery();
+
         return $qb->execute();
     }
 }

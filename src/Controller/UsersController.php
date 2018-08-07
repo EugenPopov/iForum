@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file is part of the "php-paradise/array-keys-converter" package.
+ * (c) Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Controller;
 
 use App\Form\ChangeAvatarForm;
@@ -24,6 +31,7 @@ class UsersController extends Controller
      * @var form create editing form
      *
      * @Route("/edit/user", name="edit_user")
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function EditUser(Request $request)
@@ -46,6 +54,7 @@ class UsersController extends Controller
 
             return $this->redirectToRoute('profile');
         }
+
         return $this->render('users/edituser.html.twig', ['form'=>$form->createView()]);
     }
 
@@ -92,6 +101,7 @@ class UsersController extends Controller
 
             return $this->redirectToRoute('profile');
         }
+
         return $this->render('users/changeAvatar.html.twig', ['form' => $form->createView()]);
     }
 
@@ -118,8 +128,10 @@ class UsersController extends Controller
             $user->setPassword($password);
 
             $em->flush();
+
             return $this->redirectToRoute('profile');
         }
+
         return $this->render('users/changePassword.html.twig', ['form'=>$form->createView()]);
     }
 }
