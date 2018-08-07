@@ -28,6 +28,7 @@ class GiveAdminCommand extends ContainerAwareCommand
 
         if (empty($user)) {
             $output->writeln('Such a user doesn\'t exist');
+
             return;
         }
 
@@ -39,8 +40,10 @@ class GiveAdminCommand extends ContainerAwareCommand
             '/(y|yes|yeah)/'
         );
         $confirmResult = $helper->ask($input, $output, $confirm);
+
         if (!$confirmResult) {
             $output->writeln('Canceled');
+
             return;
         }
         $user->setRoles('ROLE_ADMIN');

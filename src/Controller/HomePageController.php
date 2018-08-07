@@ -18,6 +18,7 @@ class HomePageController extends Controller
      * @var section_list get all sections list
      *
      * @Route("/", name="home")
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function index(Request $request)

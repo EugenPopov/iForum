@@ -18,8 +18,8 @@ class SearchForm extends AbstractType
                 'choices' =>[
                     'Only Messages' => 1,
                     'Only Topics' => 2,
-                    'Messages and Topics' => 3
-                ]
+                    'Messages and Topics' => 3,
+                ],
             ])
             ->add('save', SubmitType::class, ['label'=>'Search'])
             ->getForm();

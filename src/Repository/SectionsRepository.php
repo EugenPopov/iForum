@@ -7,8 +7,8 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Sections|null find($id, $lockMode = null, $lockVersion = null)
- * @method Sections|null findOneBy(array $criteria, array $orderBy = null)
+ * @method null|Sections find($id, $lockMode = null, $lockVersion = null)
+ * @method null|Sections findOneBy(array $criteria, array $orderBy = null)
  * @method Sections[]    findAll()
  * @method Sections[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */

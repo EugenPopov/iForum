@@ -16,6 +16,7 @@ class SecurityController extends Controller
      * @var lastUsername fill username form with last filled username
      *
      * @Route("/login", name="login")
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function loginAction(Request $request, AuthenticationUtils $authUtils)

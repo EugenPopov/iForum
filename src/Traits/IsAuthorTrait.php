@@ -10,7 +10,7 @@ trait IsAuthorTrait
             return false;
         }
 
-        if ($user->getRoles() == 'ROLE_ADMIN') {
+        if ('ROLE_ADMIN' == $user->getRoles()) {
             return true;
         }
 

@@ -9,8 +9,8 @@ use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @method Users|null find($id, $lockMode = null, $lockVersion = null)
- * @method Users|null findOneBy(array $criteria, array $orderBy = null)
+ * @method null|Users find($id, $lockMode = null, $lockVersion = null)
+ * @method null|Users findOneBy(array $criteria, array $orderBy = null)
  * @method Users[]    findAll()
  * @method Users[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
@@ -28,7 +28,7 @@ class UsersRepository extends ServiceEntityRepository implements UserLoaderInter
      *
      * @param string $username The username
      *
-     * @return UserInterface|null
+     * @return null|UserInterface
      */
     public function loadUserByUsername($username)
     {

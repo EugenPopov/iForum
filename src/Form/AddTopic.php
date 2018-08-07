@@ -18,7 +18,7 @@ class AddTopic extends AbstractType
             ->add('section', EntityType::class, [
                 'class' => Sections::class,
                 'choice_label' => 'name',
-                'data'=>'abcdef'])
+                'data'=>'abcdef', ])
             ->add('save', SubmitType::class, ['label'=>'Create Topic'])
             ->getForm();
     }

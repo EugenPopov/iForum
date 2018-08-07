@@ -8,10 +8,10 @@ class UserService extends AbstractController
 {
     public function getUserId()
     {
-        if ($this->getUser() != null) {
+        if (null != $this->getUser()) {
             return $this->getUser()->getId();
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 }

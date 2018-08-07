@@ -24,7 +24,8 @@ class TopicController extends Controller
      * @var message has messages from $topic, they will be deleted too
      *
      * @Route("/delete/topic/{id}", name="delete_topic")
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     *
+     * @return Response|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteTopic($id)
     {
@@ -57,7 +58,8 @@ class TopicController extends Controller
      * @var form has form that u'll fill
      *
      * @Route("/edit/topic/{id}", name="edit_topic")
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     *
+     * @return Response|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function EditTopic(Request $request, $id)
     {
@@ -74,9 +76,11 @@ class TopicController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
+
             return $this->redirectToRoute('form', ['id'=>$topic->getSection()->getId()]);
         }
         $form->handleRequest($request);
+
         return $this->render('topics/editTopic.html.twig', ['form'=>$form->createView()]);
     }
 
@@ -96,6 +100,7 @@ class TopicController extends Controller
         $form = $this->createForm(AddTopic::class, $user);
 
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $entity_manager = $this->getDoctrine()->getManager();
             $entity_manager->persist($user);
@@ -116,6 +121,7 @@ class TopicController extends Controller
      * @var result create pagination with chosen options
      *
      * @Route("/section/{id}", name="form")
+     *
      * @return Response
      */
     public function showTopics($id, UserService $service, Request $request)
@@ -123,9 +129,7 @@ class TopicController extends Controller
         $em = $this->getDoctrine()->getManager();
         $topics = $em->getRepository(Topics::class)->findBy(['section'=>$id]);
 
-        /**
-         *
-         */
+        
         $paginator  = $this->get('knp_paginator');
 
         $result = $paginator->paginate(
@@ -145,6 +149,7 @@ class TopicController extends Controller
      * @var topic has topic that will be closed
      *
      * @Route("/close_topic/{id}", name="close")
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function CloseTopic($id)

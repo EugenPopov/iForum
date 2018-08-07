@@ -7,7 +7,6 @@ use App\Entity\Topics;
 use App\Repository\MessagesRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MessageService
 {
@@ -39,7 +38,7 @@ class MessageService
         $entityManager->flush();
 
 
-        if ($entityManager->getRepository(Messages::class)->findBy(['topics' => $topic_id]) != null) {
+        if (null != $entityManager->getRepository(Messages::class)->findBy(['topics' => $topic_id])) {
             $message_list = $query->lastMessage($MRepository->findOneBy(['topics' => $topic_id]));
             $topic = $entityManager->getRepository(Topics::class)->findOneBy(['id'=>$topic_id]);
 

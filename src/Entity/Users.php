@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -56,7 +57,7 @@ class Users implements UserInterface, \Serializable
     private $image;
     public function __construct()
     {
-        $this->roles = array('ROLE_USER');
+        $this->roles = ['ROLE_USER'];
         $this->createdAt = new \DateTime();
     }
     public function getId(): int
@@ -122,20 +123,20 @@ class Users implements UserInterface, \Serializable
 
     public function serialize()
     {
-        return serialize(array(
+        return serialize([
             $this->id,
             $this->username,
-            $this->password
-        ));
+            $this->password,
+        ]);
     }
 
     public function unserialize($serialized)
     {
-        list(
+        [
             $this->id,
             $this->username,
             $this->password
-            ) = unserialize($serialized, array('allowed_classes'=> false));
+            ] = unserialize($serialized, ['allowed_classes'=> false]);
     }
 
     public function getImage()

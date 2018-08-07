@@ -54,6 +54,7 @@ class Topics
 
     /**
      * Topics constructor.
+     *
      * @param $date
      */
     public function __construct()

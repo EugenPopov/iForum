@@ -23,7 +23,8 @@ class MessageController extends Controller
      * @var MessageService is service that have functions to add and delete messages
      *
      * @Route("/delete/message/{id}", name="delete_message")
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     *
+     * @return Response|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteMessage($id, MessagesRepository $query, MessageService $messageService)
     {
@@ -46,7 +47,8 @@ class MessageController extends Controller
      * MessageService is service that have functions to add and delete messages
      *
      * @Route("/edit/message/{id}", name="edit_message")
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     *
+     * @return Response|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function editMessage($id, Request $request)
     {
@@ -65,6 +67,7 @@ class MessageController extends Controller
 
             return $this->redirectToRoute('list', ['id'=>$message->getTopics()->getId()]);
         }
+
         return $this->render('editing/editMessage.html.twig', ['form'=>$form->createView()]);
     }
 
@@ -73,14 +76,13 @@ class MessageController extends Controller
      *
      * @var topic_repository get the current topic
      * @var $message_repository get the message list
-     *
      * @var paginator call pagination
      * @var result create pagination by chosen properties
-     *
      * @var form show form where u can write message if u are authorized
      *
      * @Route("/topic/{id}", name="list")
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     *
+     * @return Response|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function showMessages(Request $request, $id, MessageService $addMessageService, UserService $user)
     {
@@ -92,7 +94,7 @@ class MessageController extends Controller
         $message_list = $message_repository->findBy(['topics'=>$id]);
 
         /**
-         * @var $paginator \Knp\Component\Pager\Paginator
+         * @var \Knp\Component\Pager\Paginator
          */
         $paginator  = $this->get('knp_paginator');
 

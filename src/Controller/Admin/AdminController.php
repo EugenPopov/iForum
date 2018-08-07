@@ -18,6 +18,7 @@ class AdminController extends Controller
      * @var users
      *
      * @Route("/admin/userlist", name="user_list")
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function UserList()
@@ -44,6 +45,7 @@ class AdminController extends Controller
      * @var user get needed user
      *
      * @Route("/admin/give_admin{id}", name="give_admin")
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function giveAdmin($id)
@@ -65,6 +67,7 @@ class AdminController extends Controller
      * @var form create form which u'll have to fill
      *
      * @Route("/admin/add_section", name="add_section")
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function AddSection(Request $request)
@@ -82,6 +85,7 @@ class AdminController extends Controller
 
             return $this->redirectToRoute('home');
         }
+
         return $this->render('admin/addSection.html.twig', ['form'=>$form->createView()]);
     }
 }

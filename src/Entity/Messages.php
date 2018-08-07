@@ -42,6 +42,7 @@ class Messages
 
     /**
      * Messages constructor.
+     *
      * @param $date
      */
     public function __construct()

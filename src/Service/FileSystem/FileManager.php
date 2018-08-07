@@ -20,6 +20,7 @@ class FileManager
         try {
             $newFileName = $this->fileName->getName($file->getClientOriginalName());
             $file->move($this->uploadDir, $newFileName);
+
             return $newFileName;
         } catch (FileException $e) {
             return null;

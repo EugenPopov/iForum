@@ -3,13 +3,10 @@
 namespace App\Service\Searching;
 
 use App\Entity\Messages;
-use App\Entity\Sections;
 use App\Entity\Topics;
 use App\Repository\MessagesRepository;
 use App\Repository\TopicsRepository;
-use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManager;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class FindByQuestion
 {
@@ -49,6 +46,7 @@ class FindByQuestion
 
                 break;
         }
+
         return $results;
     }
 }

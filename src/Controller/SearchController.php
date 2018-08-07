@@ -18,6 +18,7 @@ class SearchController extends Controller
      * @var FindByQuestion is service that return an array of messages and topics found
      *
      * @Route("/search", name="search")
+     *
      * @return Response
      */
     public function ShowResult(Request $request, FindByQuestion $query)
