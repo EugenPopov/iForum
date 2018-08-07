@@ -1,3 +1,4 @@
+
 controllers:
     resource: ../../src/Controller/
     type: annotation
@@ -6,3 +7,12 @@ rest_controller:
     resource: ../../src/Controller/Api/
     type: annotation
     prefix: /api
+
+#web_controller:
+#    resource: ../../src/Controller/Web/
+#    type: annotation
+#rest_controller:
+#    resource: ../../src/Controller/Api/
+#    type: annotation
+#    prefix: /api
+
