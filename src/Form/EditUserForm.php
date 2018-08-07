@@ -13,10 +13,10 @@ class EditUserForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username',TextType::class,['label'=>'popov'])
-            ->add('email',TextType::class)
-            ->add('Password',PasswordType::class)
-            ->add('save',SubmitType::class,['label'=>'Save'])
+            ->add('username', TextType::class, ['label'=>'popov'])
+            ->add('email', TextType::class)
+            ->add('Password', PasswordType::class)
+            ->add('save', SubmitType::class, ['label'=>'Save'])
             ->getForm();
     }
 }

@@ -14,13 +14,13 @@ class ChangePasswordForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('oldPassword',PasswordType::class)
-            ->add('newPassword',RepeatedType::class,[
+            ->add('oldPassword', PasswordType::class)
+            ->add('newPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'first_options'  => ['label' => 'Password'],
                 'second_options' => ['label' => 'Repeat Password'],
             ])
-            ->add('save',SubmitType::class,['label'=>'Change'])
+            ->add('save', SubmitType::class, ['label'=>'Change'])
             ->getForm();
     }
 }

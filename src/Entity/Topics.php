@@ -10,7 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Topics
 {
-
     use IsAuthorTrait;
     /**
      * @ORM\Id()
@@ -140,5 +139,4 @@ class Topics
     {
         return $this->getAuthor()->getId() === $userId;
     }
-
 }

@@ -11,7 +11,7 @@ class UserRegistration
 {
     public function registerAction(UserPasswordEncoderInterface $passwordEncoder, Users $users, EntityManagerInterface $entityManager, FileManager $fileManager)
     {
-        if($fileName = $fileManager->upload($users->getImage())){
+        if ($fileName = $fileManager->upload($users->getImage())) {
             $users->setImage($fileName);
         }
         $password = $passwordEncoder->encodePassword($users, $users->getPlainPassword());

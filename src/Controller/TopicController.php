@@ -33,19 +33,21 @@ class TopicController extends Controller
         $topic = $em->getRepository(Topics::class)->findOneBy(['id'=>$id]);
         $messages = $em->getRepository(Messages::class)->findBy(['topics'=>$id]);
 
-        if(empty($topic) or !$topic->IsAuthorOf($topic,$this->getUser()))
+        if (empty($topic) or !$topic->IsAuthorOf($topic, $this->getUser())) {
             return $this->render('error.html.twig');
+        }
 
         $topic->setLastMessage(null);
 
-        foreach ($messages as $message)
-        $em->remove($message);
+        foreach ($messages as $message) {
+            $em->remove($message);
+        }
         $em->flush();
 
         $em->remove($topic);
         $em->flush();
 
-        return $this->redirectToRoute('form',['id'=>$topic->getSection()->getId()]);
+        return $this->redirectToRoute('form', ['id'=>$topic->getSection()->getId()]);
     }
 
     /**
@@ -57,24 +59,25 @@ class TopicController extends Controller
      * @Route("/edit/topic/{id}", name="edit_topic")
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function EditTopic(Request $request,$id)
+    public function EditTopic(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
         $topic = $em->getRepository(Topics::class)->find($id);
-        $form = $this->createForm(EditTopicForm::class,$topic);
+        $form = $this->createForm(EditTopicForm::class, $topic);
 
-        if(empty($topic) or !$topic->IsAuthorOf($topic,$this->getUser()))
+        if (empty($topic) or !$topic->IsAuthorOf($topic, $this->getUser())) {
             return $this->render('error.html.twig');
+        }
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
-            return $this->redirectToRoute('form',['id'=>$topic->getSection()->getId()]);
+            return $this->redirectToRoute('form', ['id'=>$topic->getSection()->getId()]);
         }
         $form->handleRequest($request);
-    return $this->render('topics/editTopic.html.twig',['form'=>$form->createView()]);
+        return $this->render('topics/editTopic.html.twig', ['form'=>$form->createView()]);
     }
 
     /**
@@ -84,7 +87,7 @@ class TopicController extends Controller
      *
      * @Route("/add_topic/{id}", name="add_topic")
      */
-    public function addTopic(Request $request,$id=null)
+    public function addTopic(Request $request, $id=null)
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
@@ -94,16 +97,15 @@ class TopicController extends Controller
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
             $entity_manager = $this->getDoctrine()->getManager();
             $entity_manager->persist($user);
             $entity_manager->flush();
             $last_id = $user->getId();
 
-            return $this->render('list',['id'=>$last_id]);
+            return $this->render('list', ['id'=>$last_id]);
         }
         //$this->addSql("INSERT INTO sections (name) VALUES ('Авто'),('Кино'),('Музыка'),('ИТ'),('Бизнес')");
-        return $this->render('topics/addTopic.html.twig',['form'=>$form->createView()]);
+        return $this->render('topics/addTopic.html.twig', ['form'=>$form->createView()]);
     }
 
     /**
@@ -134,7 +136,7 @@ class TopicController extends Controller
 
         $userId = $service->getUserId();
 
-        return $this->render('topics/topics.html.twig',['topics'=>$result, 'id'=>$id,'userId'=>$userId, 'result'=>$result]);
+        return $this->render('topics/topics.html.twig', ['topics'=>$result, 'id'=>$id,'userId'=>$userId, 'result'=>$result]);
     }
 
     /**
@@ -151,13 +153,14 @@ class TopicController extends Controller
 
         $topic = $em->getRepository(Topics::class)->findOneBy(['id'=>$id]);
 
-        if(empty($topic) or !$topic->IsAuthorOf($topic,$this->getUser()))
+        if (empty($topic) or !$topic->IsAuthorOf($topic, $this->getUser())) {
             return $this->redirectToRoute('error.html.twig');
+        }
 
         $topic->setClose(true);
 
         $em->flush();
 
-        return $this->redirectToRoute('form',['id'=>$topic->getSection()->getId()]);
+        return $this->redirectToRoute('form', ['id'=>$topic->getSection()->getId()]);
     }
 }

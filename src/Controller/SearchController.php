@@ -26,6 +26,6 @@ class SearchController extends Controller
 
         $results = $query->index($question, $this->getDoctrine()->getManager());
 
-        return $this->render('search/list.html.twig',['results'=>$results,'filter'=>$question['filter']]);
+        return $this->render('search/list.html.twig', ['results'=>$results,'filter'=>$question['filter']]);
     }
 }

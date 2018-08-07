@@ -24,34 +24,16 @@ class HomePageController extends Controller
     {
         $search = new Search();
 
-        $search_form =$this->createForm(SearchForm::class,$search);
+        $search_form =$this->createForm(SearchForm::class, $search);
         $search_form->handleRequest($request);
 
         if ($search_form->isSubmitted() && $search_form->isValid()) {
-            return $this->redirectToRoute('search',['search'=>$search]);
+            return $this->redirectToRoute('search', ['search'=>$search]);
         }
 
         $repository = $this->getDoctrine()->getRepository(Sections::class);
         $sections_list = $repository->findAll();
 
-       return $this->render('home/index.html.twig',['sections_list'=>$sections_list,'form'=>$search_form->createView()]);
+        return $this->render('home/index.html.twig', ['sections_list'=>$sections_list,'form'=>$search_form->createView()]);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

@@ -22,19 +22,19 @@ class MessagesRepository extends ServiceEntityRepository
 
     public function getQuery($object)
     {
-                $qb = $this->createQueryBuilder('q')
-                    ->select('IDENTITY(q.topics)','q.text')
+        $qb = $this->createQueryBuilder('q')
+                    ->select('IDENTITY(q.topics)', 'q.text')
                     ->andWhere("q.text LIKE :object")
-                    ->setParameter("object",'%'.$object['question'].'%')
+                    ->setParameter("object", '%'.$object['question'].'%')
                     ->getQuery();
-            return $qb->execute();
+        return $qb->execute();
     }
 
     public function lastMessage($topic)
     {
         $qb = $this->createQueryBuilder('t');
         $qb->setMaxResults(1);
-        $qb->orderBy('t.id','DESC');
+        $qb->orderBy('t.id', 'DESC');
 
         return $qb->getQuery()->getSingleResult();
     }

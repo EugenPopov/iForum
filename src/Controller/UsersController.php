@@ -35,7 +35,7 @@ class UsersController extends Controller
         $newUser->setUserName($user->getUsername());
         $newUser->setEmail($user->getEmail());
 
-        $form = $this->createForm(EditUserForm::class,$newUser);
+        $form = $this->createForm(EditUserForm::class, $newUser);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -46,7 +46,7 @@ class UsersController extends Controller
 
             return $this->redirectToRoute('profile');
         }
-        return $this->render('users/edituser.html.twig',['form'=>$form->createView()]);
+        return $this->render('users/edituser.html.twig', ['form'=>$form->createView()]);
     }
 
 
@@ -64,7 +64,7 @@ class UsersController extends Controller
         $repository = $this->getDoctrine()->getRepository(Users::class);
         $user = $repository->findOneBy(['id'=>$this->getUser()->getId()]);
 
-        return $this->render('users/user.html.twig',['user'=>$user]);
+        return $this->render('users/user.html.twig', ['user'=>$user]);
     }
 
     /**
@@ -74,27 +74,25 @@ class UsersController extends Controller
      *
      * @Route("/change_avatar", name="changeAvatar")
      */
-    public function ChangeImage(Request $request,FileManager $fileManager)
+    public function ChangeImage(Request $request, FileManager $fileManager)
     {
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository(Users::class)->findOneBy(['id'=>$this->getUser()->getId()]);
 
         $newUser = new Avatar();
 
-        $form = $this->createForm(ChangeAvatarForm::class,$newUser);
+        $form = $this->createForm(ChangeAvatarForm::class, $newUser);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
-
-            if($fileName = $fileManager->upload($newUser->getImage())){
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($fileName = $fileManager->upload($newUser->getImage())) {
                 $user->setImage($fileName);
             }
             $em->flush();
 
-        return $this->redirectToRoute('profile');
+            return $this->redirectToRoute('profile');
         }
-        return $this->render('users/changeAvatar.html.twig',['form' => $form->createView()]);
-
+        return $this->render('users/changeAvatar.html.twig', ['form' => $form->createView()]);
     }
 
     /**
@@ -105,7 +103,7 @@ class UsersController extends Controller
      *
      * @Route("/change_password", name="changePassword")
      */
-    public function ChangePassword(Request $request,UserPasswordEncoderInterface $encoder)
+    public function ChangePassword(Request $request, UserPasswordEncoderInterface $encoder)
     {
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository(Users::class)->findOneBy(['id'=>$this->getUser()->getId()]);
@@ -115,14 +113,13 @@ class UsersController extends Controller
         $form = $this->createForm(ChangePasswordForm::class, $newUser);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
-            $password = $encoder->encodePassword($user,$newUser->getNewPassword());
+        if ($form->isSubmitted() && $form->isValid()) {
+            $password = $encoder->encodePassword($user, $newUser->getNewPassword());
             $user->setPassword($password);
 
             $em->flush();
             return $this->redirectToRoute('profile');
         }
-    return $this->render('users/changePassword.html.twig',['form'=>$form->createView()]);
+        return $this->render('users/changePassword.html.twig', ['form'=>$form->createView()]);
     }
-
 }

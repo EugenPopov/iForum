@@ -25,7 +25,7 @@ class AdminController extends Controller
         $repository = $this->getDoctrine()->getRepository(Users::class);
         $users = $repository->findAll();
 
-        return $this->render('admin/userList.html.twig',['users'=>$users]);
+        return $this->render('admin/userList.html.twig', ['users'=>$users]);
     }
 
     /**
@@ -35,7 +35,6 @@ class AdminController extends Controller
      */
     public function admin()
     {
-
         return $this->render('admin/admin.html.twig');
     }
 
@@ -72,7 +71,7 @@ class AdminController extends Controller
     {
         $section = new Sections();
 
-        $form = $this->createForm(AddSection::class,$section);
+        $form = $this->createForm(AddSection::class, $section);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -83,7 +82,6 @@ class AdminController extends Controller
 
             return $this->redirectToRoute('home');
         }
-        return $this->render('admin/addSection.html.twig',['form'=>$form->createView()]);
+        return $this->render('admin/addSection.html.twig', ['form'=>$form->createView()]);
     }
-
 }

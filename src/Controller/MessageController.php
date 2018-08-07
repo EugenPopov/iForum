@@ -31,12 +31,13 @@ class MessageController extends Controller
         $MRepository = $em->getRepository(Messages::class);
         $message = $MRepository->findOneBy(['id'=>$id]);
 
-        if(empty($message) or !$message->IsAuthorOf($message,$this->getUser()))
+        if (empty($message) or !$message->IsAuthorOf($message, $this->getUser())) {
             return $this->render('error.html.twig');
+        }
 
-            $messageService->DeleteMessageAction($message, $em, $MRepository, $query);
+        $messageService->DeleteMessageAction($message, $em, $MRepository, $query);
 
-            return $this->redirectToRoute('list',['id'=>$message->getTopics()->getId()]);
+        return $this->redirectToRoute('list', ['id'=>$message->getTopics()->getId()]);
     }
 
     /**
@@ -47,24 +48,24 @@ class MessageController extends Controller
      * @Route("/edit/message/{id}", name="edit_message")
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function editMessage($id,Request $request){
-
+    public function editMessage($id, Request $request)
+    {
         $em = $this->getDoctrine()->getManager();
         $message = $em->getRepository(Messages::class)->find($id);
 
-        if(empty($message) or !$message->isAuthorOf($message,$this->getUser()))
+        if (empty($message) or !$message->isAuthorOf($message, $this->getUser())) {
             return $this->render('error.html.twig');
+        }
 
-        $form = $this->createForm(EditMessageForm::class,$message);
+        $form = $this->createForm(EditMessageForm::class, $message);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $em->flush();
 
-            return $this->redirectToRoute('list',['id'=>$message->getTopics()->getId()]);
+            return $this->redirectToRoute('list', ['id'=>$message->getTopics()->getId()]);
         }
-        return $this->render('editing/editMessage.html.twig',['form'=>$form->createView()]);
+        return $this->render('editing/editMessage.html.twig', ['form'=>$form->createView()]);
     }
 
     /**
@@ -103,15 +104,15 @@ class MessageController extends Controller
 
 
         $messages = new Messages();
-        $form = $this->createForm(AddMessage::class,$messages);
+        $form = $this->createForm(AddMessage::class, $messages);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $addMessageService->AddMessageAction($entity_manager,$topic_repository,$messages,$message_repository, $this->getUser());
+            $addMessageService->AddMessageAction($entity_manager, $topic_repository, $messages, $message_repository, $this->getUser());
 
-            return $this->redirectToRoute('list',['id'=>$id]);
+            return $this->redirectToRoute('list', ['id'=>$id]);
         }
 
-        return $this->render('topics/messages.html.twig',['messages'=>$result, 'id'=>$id, 'form'=>$form->createView(),'current_user'=>$this->getUser(),'topic'=>$topic_repository,'result'=>$result]);
+        return $this->render('topics/messages.html.twig', ['messages'=>$result, 'id'=>$id, 'form'=>$form->createView(),'current_user'=>$this->getUser(),'topic'=>$topic_repository,'result'=>$result]);
     }
 }

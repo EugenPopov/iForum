@@ -12,9 +12,8 @@ class EditTopicForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name',TextType::class,['label'=>'Topic Name'])
-            ->add('save',SubmitType::class,['label'=>'Save'])
+            ->add('name', TextType::class, ['label'=>'Topic Name'])
+            ->add('save', SubmitType::class, ['label'=>'Save'])
             ->getForm();
     }
-
 }

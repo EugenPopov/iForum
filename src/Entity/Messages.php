@@ -105,6 +105,4 @@ class Messages
     {
         return $this->getAuthor()->getId() === $userId;
     }
-
-
 }

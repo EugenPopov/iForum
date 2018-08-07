@@ -15,8 +15,7 @@ class FindByQuestion
 {
     public function index($question, EntityManager $entitymanager)
     {
-
-        switch ($question['filter']){
+        switch ($question['filter']) {
             case 1:
                 /** @var MessagesRepository $MRepository */
                 $MRepository = $entitymanager->getRepository(Messages::class);
@@ -28,7 +27,7 @@ class FindByQuestion
                 $TRepository = $entitymanager->getRepository(Topics::class);
                 $topics = $TRepository->getQuery($question);
 
-                foreach ($topics as $topic){
+                foreach ($topics as $topic) {
                     $topic = $entitymanager->getRepository(Topics::class)->findOneBy(['section'=>$topic[1]]);
                     $results[] = ['1' => $topic->getId(),'name'=>$topic->getName()];
                 }
@@ -42,7 +41,7 @@ class FindByQuestion
                 $results[] = $MRepository->getQuery($question);
                 $topics = $TRepository->getQuery($question);
 
-                foreach ($topics as $topic){
+                foreach ($topics as $topic) {
                     $topic = $entitymanager->getRepository(Topics::class)->findOneBy(['section'=>$topic[1]]);
                     $results[1][] = ['1' => $topic->getId(),'name'=>$topic->getName()];
                 }
@@ -52,5 +51,4 @@ class FindByQuestion
         }
         return $results;
     }
-
 }

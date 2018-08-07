@@ -1,5 +1,6 @@
 <?php
 namespace App\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -96,7 +97,6 @@ class Users implements UserInterface, \Serializable
     }
     public function eraseCredentials()
     {
-
     }
     public function setRoles($roles): void
     {
@@ -131,7 +131,7 @@ class Users implements UserInterface, \Serializable
 
     public function unserialize($serialized)
     {
-        list (
+        list(
             $this->id,
             $this->username,
             $this->password

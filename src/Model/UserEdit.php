@@ -8,7 +8,6 @@ use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
 
 class UserEdit
 {
-
     private $userName;
 
 
@@ -68,7 +67,4 @@ class UserEdit
     {
         $this->Password = $Password;
     }
-    
-    
-    
 }

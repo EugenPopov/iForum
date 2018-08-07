@@ -30,22 +30,22 @@ class MessageService
     {
         $topic_id = $message->getTopics()->getId();
 
-            if ($message->getText() == $message->getTopics()->getLastMessage()->getText()) {
-                $message->getTopics()->setLastMessage(null);
-                $entityManager->persist($message);
-            }
+        if ($message->getText() == $message->getTopics()->getLastMessage()->getText()) {
+            $message->getTopics()->setLastMessage(null);
+            $entityManager->persist($message);
+        }
 
-            $entityManager->remove($message);
-            $entityManager->flush();
+        $entityManager->remove($message);
+        $entityManager->flush();
 
 
         if ($entityManager->getRepository(Messages::class)->findBy(['topics' => $topic_id]) != null) {
-                    $message_list = $query->lastMessage($MRepository->findOneBy(['topics' => $topic_id]));
-                    $topic = $entityManager->getRepository(Topics::class)->findOneBy(['id'=>$topic_id]);
+            $message_list = $query->lastMessage($MRepository->findOneBy(['topics' => $topic_id]));
+            $topic = $entityManager->getRepository(Topics::class)->findOneBy(['id'=>$topic_id]);
 
-                    $topic->setLastMessage($message_list);
-                    $entityManager->persist($topic);
-                    $entityManager->flush();
-         }
+            $topic->setLastMessage($message_list);
+            $entityManager->persist($topic);
+            $entityManager->flush();
+        }
     }
 }

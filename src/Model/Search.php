@@ -2,10 +2,8 @@
 
 namespace App\Model;
 
-
 class Search
 {
-
     public $question;
     public $filter;
 
@@ -40,7 +38,4 @@ class Search
     {
         $this->filter = $filter;
     }
-
-
-
 }

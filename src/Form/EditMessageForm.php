@@ -12,8 +12,8 @@ class EditMessageForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('text',TextType::class)
-            ->add('save',SubmitType::class,['label'=>'Change'])
+            ->add('text', TextType::class)
+            ->add('save', SubmitType::class, ['label'=>'Change'])
             ->getForm();
     }
 }

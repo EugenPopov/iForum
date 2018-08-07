@@ -14,13 +14,12 @@ class AddTopic extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name',TextType::class,['label'=>'popov', 'data'=>'default'])
-            ->add('section',EntityType::class, [
+            ->add('name', TextType::class, ['label'=>'popov', 'data'=>'default'])
+            ->add('section', EntityType::class, [
                 'class' => Sections::class,
                 'choice_label' => 'name',
                 'data'=>'abcdef'])
-            ->add('save',SubmitType::class,['label'=>'Create Topic'])
+            ->add('save', SubmitType::class, ['label'=>'Create Topic'])
             ->getForm();
-
     }
 }

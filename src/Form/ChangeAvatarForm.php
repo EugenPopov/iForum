@@ -12,8 +12,8 @@ class ChangeAvatarForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('image',FileType::class,['label'=>'choose photo'])
-            ->add('save',SubmitType::class,['label'=>'Save'])
+            ->add('image', FileType::class, ['label'=>'choose photo'])
+            ->add('save', SubmitType::class, ['label'=>'Save'])
             ->getForm();
     }
 }

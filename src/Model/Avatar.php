@@ -28,5 +28,4 @@ class Avatar
     {
         $this->image = $image;
     }
-
 }

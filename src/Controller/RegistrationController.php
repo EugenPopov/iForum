@@ -31,7 +31,7 @@ class RegistrationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            $registration->registerAction($passwordEncoder,$user,$em,$fileManager);
+            $registration->registerAction($passwordEncoder, $user, $em, $fileManager);
 
             return $this->redirectToRoute('home');
         }

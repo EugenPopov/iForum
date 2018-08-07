@@ -52,6 +52,4 @@ class ChangePassword extends AbstractType
     {
         $this->newPassword = $newPassword;
     }
-
-
 }
