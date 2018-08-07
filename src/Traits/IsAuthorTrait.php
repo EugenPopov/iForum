@@ -16,11 +16,9 @@ trait IsAuthorTrait
         if (empty($user) or empty($entity)) {
             return false;
         }
-
-        if ('ROLE_ADMIN' == $user->getRoles()) {
+        if (['ROLE_ADMIN'] == $user->getRoles()) {
             return true;
         }
-
         return $entity->getAuthor()->getId() === $user->getId();
     }
 }
