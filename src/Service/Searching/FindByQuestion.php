@@ -29,15 +29,7 @@ class FindByQuestion
             case 2:
                 /** @var TopicsRepository $TRepository */
                 $TRepository = $entitymanager->getRepository(Topics::class);
-                $topics = $TRepository->getQuery($question);
-
-                if(empty($topics))
-                    return null;
-
-                foreach ($topics as $topic) {
-                    $topic = $entitymanager->getRepository(Topics::class)->findOneBy(['section'=>$topic[1]]);
-                    $results[] = ['1' => $topic->getId(),'name'=>$topic->getName()];
-                }
+                $results = $TRepository->getQuery($question);
 
                 break;
             case 3:
@@ -46,12 +38,7 @@ class FindByQuestion
                 $MRepository = $entitymanager->getRepository(Messages::class);
                 $TRepository = $entitymanager->getRepository(Topics::class);
                 $results[] = $MRepository->getQuery($question);
-                $topics = $TRepository->getQuery($question);
-
-                foreach ($topics as $topic) {
-                    $topic = $entitymanager->getRepository(Topics::class)->findOneBy(['section'=>$topic[1]]);
-                    $results[1][] = ['1' => $topic->getId(),'name'=>$topic->getName()];
-                }
+                $results[] = $TRepository->getQuery($question);
 
 
                 break;

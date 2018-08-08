@@ -29,7 +29,7 @@ class TopicsRepository extends ServiceEntityRepository
     public function getQuery($object)
     {
         $qb = $this->createQueryBuilder('q')
-            ->select('IDENTITY(q.section)', 'q.name')
+            ->select('q.id', 'q.name')
             ->where('q.name LIKE :object')
             ->setParameter('object', $object['question'])
             ->getQuery();

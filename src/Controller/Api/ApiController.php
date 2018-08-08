@@ -49,7 +49,7 @@ class ApiController extends FOSRestController
      *
      * @Rest\Get("/user/{id}")
      */
-    public function getUser(int $id)
+    public function getUsers(int $id)
     {
         $user = $this->getDoctrine()
             ->getRepository(Users::class)

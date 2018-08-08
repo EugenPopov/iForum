@@ -13,7 +13,7 @@
             <div class="row">
             {% for result in results %}
                 <div class="list-group col-12" style="text-align: center">
-                    <a href="{{ path('list',{'id': result.1}) }}" class="list-group-item list-group-item-action">{{ result.name }}</a>
+                    <a href="{{ path('list',{'id': result.id}) }}" class="list-group-item list-group-item-action">{{ result.name }}</a>
                 </div>
 
             {% endfor %}
@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-6 list-group">
                     {% for topic in results.1 %}
-                        <a href="{{ path('list',{'id': topic.1}) }}" class="list-group-item list-group-item-action">{{ topic.name }}</a>
+                        <a href="{{ path('list',{'id': topic.id}) }}" class="list-group-item list-group-item-action">{{ topic.name }}</a>
                     {% endfor %}
                 </div>
             </div>
