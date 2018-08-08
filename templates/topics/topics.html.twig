@@ -3,27 +3,30 @@
     <div class="container center_style">
         {% for topic in topics %}
             <div class="row">
-                <div class="col-4 list-group text-truncate" >
-                    <a href="/topic/{{ topic.id }}" class="list-group-item list-group-item-action">{{ topic.name }}
+                <div class="col-2 list-group text-truncate" >
+                    <a href="/topic/{{ topic.id }}" class="list-group-item list-group-item-action"> Name: {{ topic.name }}
                     </a>
+                </div>
+                <div class="col-2 list-group text-truncate">
+                    <a class="list-group-item list-group-item-disabled"> Author: {{ topic.author.userName }}</a>
                 </div>
                 {% if topic.LastMessage is not empty %}
                     <div class="col-3 list-group text-truncate" >
-                        <a class="list-group-item list-group-item-action">
+                        <a class="list-group-item list-group-item-disabled">
                             Last message : {{ topic.LastMessage.text }}<br>
                         </a>
                     </div>
                     <div class="col-2 list-group text-truncate">
-                        <a class="list-group-item list-group-item-action">{{ topic.LastMessage.date }}
+                        <a class="list-group-item list-group-item-disabled">{{ topic.LastMessage.date }}
                         </a>
                     </div>
                 {% else %}
                     <div class="col-3 list-group text-truncate">
-                        <a class="list-group-item list-group-item-action">No messages yet
+                        <a class="list-group-item list-group-item-disabled">No messages yet
                         </a>
                     </div>
                     <div class="col-2 list-group text-truncate">
-                        <a class="list-group-item list-group-item-action">No messages yet
+                        <a class="list-group-item list-group-item-disabled">No messages yet
                         </a>
                     </div>
                 {% endif %}

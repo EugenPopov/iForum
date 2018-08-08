@@ -4,28 +4,39 @@
         {% if filter == 1 %}
             <div class="row">
                 <div class="list-group col-12" style="text-align: center">
-                {% for result in results %}
+                    {% if results is empty %}
+                        <h2>Nothing was found</h2>
+                    {% endif %}
+                    {% for result in results %}
                       <a href="{{ path('list',{'id': result.1}) }}" class="list-group-item list-group-item-action">{{ result.text }}</a>
-                {% endfor %}
+                    {% endfor %}
                 </div>
             </div>
         {% elseif filter == 2 %}
             <div class="row">
-            {% for result in results %}
                 <div class="list-group col-12" style="text-align: center">
-                    <a href="{{ path('list',{'id': result.id}) }}" class="list-group-item list-group-item-action">{{ result.name }}</a>
+                    {% if results is empty %}
+                        <h2>Nothing was found</h2>
+                    {% endif %}
+                    {% for result in results %}
+                        <a href="{{ path('list',{'id': result.id}) }}" class="list-group-item list-group-item-action">{{ result.name }}</a>
+                    {% endfor %}
                 </div>
-
-            {% endfor %}
             </div>
         {% elseif filter == 3 %}
             <div class="row">
                 <div class="col-6 list-group">
+                    {% if results.0 is empty %}
+                        <h2>No messages were found</h2>
+                    {% endif %}
                     {% for message in results.0 %}
                     <a href="{{ path('list',{'id': message.1}) }}" class="list-group-item list-group-item-action">{{ message.text }}</a>
                     {% endfor %}
                 </div>
                 <div class="col-6 list-group">
+                    {% if results.1 is empty %}
+                        <h2>No topics were found</h2>
+                    {% endif %}
                     {% for topic in results.1 %}
                         <a href="{{ path('list',{'id': topic.id}) }}" class="list-group-item list-group-item-action">{{ topic.name }}</a>
                     {% endfor %}
